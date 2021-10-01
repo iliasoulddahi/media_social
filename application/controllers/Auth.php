@@ -9,19 +9,23 @@ class Auth extends CI_Controller {
 
         $this->load->library('form_validation');
         $this->load->model('model_user');
+
     }
 
     public function index()
     {
         echo $this->session->flashdata('message');
     }
-
+    
+    /* 
+        LOGIN CONTROLLER
+    */ 
 	public function Login() 
     {   
 
         // form validation
 
-        // aturan
+        // aturan form menggunakan form validation milik codeigniter
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
         $this->form_validation->set_rules('password', 'password', 'required|trim');
         if($this->form_validation->run() == false){
@@ -29,35 +33,61 @@ class Auth extends CI_Controller {
             $data = [
                 'title'=>'Login',
             ];
-            $this->load->view("layout_top", $data);
-    
+            // MENAMPILKAN VIEW
+            $this->load->view("layout_top", $data);   
             $this->load->view("auth_view_login");
-    
             $this->load->view('layout_bottom');
         } else {
             
-            $data = [
+            $data_input = [
                 'email'=> $this->input->post('email'),
                 'password'=> $this->input->post('password')
             ];
-            $user = $this->db->get_where('users',[ 'email' => $data['email']] )->row_array();
+            $user = $this->model_user->get_all_from_email($data_input['email']);
             
-            // exist / ada
+            // user terdaftar
             if($user){
-                //
+                
+                // vertifikasi password
+                if(password_verify($data_input['password'], $user['password'])){
 
+                    $data = [
+                        'email' => $user['email'],
+                        'user_role'=>$user['user_role']
+                    ];
+                    
+                    // set user data
+                    $this->session->set_userdata($data);
+                    redirect('home');
 
-
+                }else{
+                    $this->session->set_flashdata('message', 'Password Salah');
+                    redirect('auth');
+                }   
             }else{
     
-            $this->session->set_flashdata('message', '<div>Email Tidak terdaftar</div>');
-            redirect('auth');
+            $this->session->set_flashdata('message', 'Email Tidak terdaftar');
+            redirect('auth/login');
     
             } 
 
         }
 
 	}
+
+    /*
+        LOGOUT CONTROLLER
+    */
+    public function logout(){
+        $this->session->unset_userdata('email');
+        $this->session->unset_userdata('user_role');
+        $this->session->sess_destroy();
+        redirect('auth/login');
+    }
+
+    /* 
+        DAFTAR/REGITRATION CONTROLLER 
+    */
 	public function registration() 
     {   
 
@@ -106,9 +136,9 @@ class Auth extends CI_Controller {
             ];
 
             // memasukan ke database
-            $this->model_user->registration($register_data);
-            $this->session->set_flashdata('message', '<div>Login Berhasil</div>');
-            redirect('auth');
+            $this->model_user->insert($register_data);
+            $this->session->set_flashdata('message', 'Daftar Berhasil');
+            redirect('auth/login');
         }
 
 

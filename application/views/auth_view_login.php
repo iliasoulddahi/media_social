@@ -9,4 +9,14 @@
     </form>
 </div>
 
-<?= $this->session->flashdata('message'); ?>
+<?php
+    $message = $this->session->flashdata('message');
+    if (isset($message)) {
+        echo '<div class="bg-red-400">' . $message . '</div>';
+         $this->session->unset_userdata('message');
+    }
+    ?>
+    
+<div>
+    <a href="<?= base_url('auth/login') ?>">Logout</a>
+</div>
