@@ -12,7 +12,7 @@ class Model_user extends CI_Model{
         return $this->db->get_where('users',[ 'email' => $email ] )->row_array();
     }
 
-
+    //insert
     public function insert($data){
         $this->db->insert('users',$data);
     }
