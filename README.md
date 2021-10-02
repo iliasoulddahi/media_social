@@ -1,2 +1,6 @@
 # medsos-kel4
- medsos untuk tugas uas ilias ould dahi semester 3 
+- applikasi medsos untuk uas wpu ilias ould dahi semester 3 
+- Framework
+-- Codeigniter3
+-- TailwindCss
+
