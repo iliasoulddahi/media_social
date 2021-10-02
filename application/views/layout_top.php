@@ -7,6 +7,7 @@
     <title><?php echo $title; ?></title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
+      <link rel="stylesheet" href="<?= base_url("assets/css/custom_hover")?>">
     <link rel="stylesheet" href="<?= base_url("assets/css/style.css")?>">
     <style>
         *{

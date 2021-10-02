@@ -30,7 +30,7 @@
             height: 0; 
             border-left: 100px solid transparent;
             border-right: 100px solid transparent;
-            border-bottom: 50px solid black;
+            border-bottom: 50px solid white;
             transform: rotate(-20deg);
         }
 
@@ -72,17 +72,22 @@
                         <div class="absolute bg-gray-800 w-4/5 h-44 right-4 top-3 rounded-lg">
                             <form action="index.html" method="post">
 
-                                <textarea name="user_post" id="user_post" cols="" rows="7" placeholder="Apa Yang Anda Pikirkan?" class="w-full rounded-md bg-purple-300 p-2"></textarea>
+                                <textarea name="user_post" id="user_post" cols="" rows="7" placeholder="Apa Yang Anda Pikirkan?" class="w-full rounded-md bg-white p-2 border-1 focus:border-0"></textarea>
 
                                 <button type="submit" class="absolute bg-indigo-600 rounded-sm bottom-3 right-3 p-1">Send Post</button>
                             </form>
                         </div>
-                    <div class="custom-triangle absolute bottom-24 left-14"></div>
+                    <label class="custom-triangle absolute bottom-24 left-14" for="user_post"></label>
                 <div class="flex justify-between items-center absolute bg-blue-400 w-3/5 h-14 bottom-6 right-4 ">
-                    <div class="w-20 h-14 bg-blue-500 rounded-lg"><a href="#">A</a></div>
-                    <div class="w-20 h-14 bg-blue-500 rounded-lg"><a href="#">A</a></div>
-                    <div class="w-20 h-14 bg-blue-500 rounded-lg"><a href="#">A</a></div>
-                    <div class="w-20 h-14 bg-blue-500 rounded-lg"><a href="#">A</a></div>
+                    <div class="w-28 h-10 bg-blue-700 hover:bg-blue-300 rounded-lg text-left"><a href="#" class="flex justify-center text-blue-300 hover:text-blue-700 text-sm"><span class="material-icons text-blue-300 hover:text-blue-700 text-4xl">
+                        image
+                    </span> Upload Gambar </a></div>
+                    <div class="w-28 h-10 bg-blue-700 hover:bg-blue-300 rounded-lg text-left"><a href="#" class="flex justify-center text-blue-300 hover:text-blue-700 text-sm"><span class="material-icons text-blue-300 hover:text-blue-700 text-4xl">
+                        snippet_folder
+                    </span> Upload </a></div>
+                    <div class="w-28 h-10 bg-blue-700 hover:bg-blue-300 rounded-lg text-left"><a href="#" class="flex justify-center text-blue-300 hover:text-blue-700 text-sm"><span class="material-icons text-blue-300 hover:text-blue-700 text-4xl">
+                        image
+                    </span> Upload <br> Gambar </a></div>
                 </div>
             </div>
 
