@@ -5,6 +5,6 @@ class Kel4testing extends CI_Controller {
 
 	public function index() 
     {   
-        var_dump($this->model_user->get_all());
+        var_dump($this->model_user->get_id_from_email('sunimah@email.com'));
 	}
 }

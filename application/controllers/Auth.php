@@ -52,8 +52,7 @@ class Auth extends CI_Controller {
                 if(password_verify($data_input['password'], $user['password'])){
 
                     $data = [
-                        'email' => $user['email'],
-                        'user_role'=>$user['user_role']
+                        'user_id' => $user['id'],
                     ];
                     
                     // set user data
@@ -79,8 +78,7 @@ class Auth extends CI_Controller {
         LOGOUT CONTROLLER
     */
     public function logout(){
-        $this->session->unset_userdata('email');
-        $this->session->unset_userdata('user_role');
+        $this->session->unset_userdata('user_id');
         $this->session->sess_destroy();
         redirect('auth/login');
     }
@@ -131,7 +129,6 @@ class Auth extends CI_Controller {
                 'gender'=>          $this->input->post('gender'),
                 'profil_image'=>    $default_profil_image,
                 'verified'=>       '1',
-                'user_role'=>       '2',
                 'date_created'=>    time()
             ];
 
