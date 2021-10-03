@@ -1,18 +1,35 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Home extends CI_Controller {
+class Home extends CI_Controller
+{
+    public function __construct()
+    {
+        parent::__construct();
 
-	public function index() 
-    {   $data_from_session_email = $this->model_user->get_all_from_id($this->session->userdata('user_id'));
+        $this->load->model('model_user');
+        $this->load->model('model_posting');
+        if (!$this->session->userdata('user_id')) {
+            redirect('auth/login');
+        }
+    }
+
+
+    public function index()
+    {
+        $data_from_session_id = $this->model_user->get_all_from_id($this->session->userdata('user_id'));
+        // Mendapat Postingan User Dari database
+        $postingan = $this->model_posting->get_all_post($this->session->userdata('user_id'));
+
         $data = [
-            'title'=> $data_from_session_email['name'],
-            'name'=> $data_from_session_email['name'],
-            'profil_image'=> $data_from_session_email['profil_image'],
+            'title' => $data_from_session_id['name'],
+            'name' => $data_from_session_id['name'],
+            'profil_image' => $data_from_session_id['profil_image'],
+            'post_anda' => $postingan
         ];
         $this->load->view("layout_top", $data);
         $this->load->view("layout_view_navbar");
-		$this->load->view('view_home');
-		$this->load->view('layout_bottom');
-	}
+        $this->load->view('view_home');
+        $this->load->view('layout_bottom');
+    }
 }

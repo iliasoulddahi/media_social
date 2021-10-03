@@ -68,21 +68,31 @@
             </div>
             <!-- scroolable -->
             <div class="w-full h-full bg-gray-500 rounded-md shadow-xl overflow-y-scroll hide-scrollbar">
-                <!-- postingan anda -->
                 <div class="text-2xl border-b border-gray-700">Postingan Anda</div>
-                <div class="w-full bg-red-400 rounded-2xl mt-3 pb-2">
-                    <div class="flex justify-between w-full">
-                        <div class="flex items-center">
-                            <img src="<?= base_url('assets/img/' . $profil_image) ?>" alt="" class="w-10 h-10 bg-white rounded-tl-xl">
-                            <div class="text-lg"><?= $name; ?></div>
+                <!-- 
+                    -(postingan anda)-
+                    1. Proses check apabila post tersedia di database
+                    2. Proses perulangan dari array yang mengkoleksi data post 
+                -->
+                <?php if (count($post_anda) < 1) : ?>
+                    <div>POSTINGAN TIDAK ADA</div>
+                <?php else : ?>
+                    <?php foreach ($post_anda as $p) : ?>
+                        <div class="w-full bg-red-400 rounded-2xl mt-3 pb-2">
+                            <div class="flex justify-between w-full">
+                                <div class="flex items-center">
+                                    <img src="<?= base_url('assets/img/' . $profil_image) ?>" alt="" class="w-10 h-10 bg-white rounded-tl-xl">
+                                    <div class="text-lg"><?= $name; ?></div>
+                                </div>
+                                <div class="font-light mt-4 mr-3"><?= date('Y/m/d H:i', $p['date']) ?></div>
+                            </div>
+                            <!-- content postingan anda -->
+                            <div class="mt-2">
+                                <?= $p['content'] ?>
+                            </div>
                         </div>
-                        <div class="font-light mt-4 mr-3">01/01/2021-12.00</div>
-                    </div>
-
-                    <div class="mt-2">
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum dolores sunt quibusdam reiciendis repellat molestias veniam eos autem rem velit.
-                    </div>
-                </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
             </div>
         </div>
         <!-- scrollable -->
@@ -91,16 +101,16 @@
             <div class="bg-gray-500 w-full h-72 relative">
                 <img src="<?= base_url('assets/img/' . $profil_image) ?>" alt="" class="transition duration-500 ease-in-out bg-blue-600 hover:bg-red-600 transform hover:-translate-y-1 hover:scale-110 absolute w-14 h-14 rounded-full bottom-2 left-2">
                 <div class="absolute bg-gray-800 w-4/5 h-5/6 right-4 top-3 rounded-lg">
-                    <form action="index.html" method="post">
+                    <form action="<?= base_url('posting/add') ?>" method="post">
 
                         <textarea name="user_post" id="user_post" cols="" rows="10" placeholder="<?= $name . ' ' ?>Apa Yang Anda Pikirkan?" class="w-full rounded-md bg-white p-2 border-1 focus:border-0"></textarea>
 
                         <button type="submit" class="absolute rounded-sm bottom-0 right-1 p-1">
-                        <span class="material-icons text-4xl">
+                            <span class="material-icons text-4xl">
                                 send
                             </span>
                         </button>
-    
+
                     </form>
                     <div class="flex justify-between w-28 absolute right-24 bottom-2">
                         <div class="w-10 h-10 bg-blue-700 hover:bg-blue-300 rounded-full text-center"><button href="#"><span class="material-icons text-blue-300 hover:text-blue-700 text-4xl">
@@ -137,7 +147,7 @@
                         </span></button>
                 </div>
                 <!-- form insert comment -->
-                <form action="" method="post" id="form-comment" class="w-full px-3 hidden">
+                <form action="<?= base_url('') ?>" method="post" id="form-comment" class="w-full px-3 hidden">
                     <div class="flex">
                         <textarea name="comment" id="comment" rows="2" placeholder="berikan komentar" class="w-full hide-scrollbar p-2 mt-3"></textarea>
                         <button type="submit">
@@ -152,6 +162,11 @@
     </div>
 </div>
 
+
+<form action="<?= base_url('friend/add_friend')?>" method="POST" class="flex bg-blue-900 w-28 h-28">
+        <div>Dony Siregar</div>
+        <button name="receiver" value="312">Add Him</button>
+</form>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="<?= base_url("js/home.js"); ?>"></script>
