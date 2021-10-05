@@ -7,10 +7,10 @@ class Model_friend extends CI_Model
         parent::__construct();
         $this->load->model('model_user');
     }
-    public function update_to_friend_list( $id, $arr)
+    public function update_to_friend_list($id, $arr)
     {
-        $data = implode(',',$arr);
-        
+        $data = implode(',', $arr);
+
         $this->db->query("UPDATE users SET friend_list='$data' WHERE id=$id");
     }
     public function get_all_friend($id)
@@ -23,8 +23,13 @@ class Model_friend extends CI_Model
         return $query;
     }
 
-    public function insert_to_friend_request($id_requester, $id_receiver){
+    public function insert_to_friend_request($id_requester, $id_receiver)
+    {
         $time = time();
         return $this->db->query("INSERT INTO friend_request (id_requester, id_receiver, date_created) VALUES ('$id_requester', '$id_receiver', '$time')");
+    }
+
+    public function get_requester_id(){
+        return $this->db->query("SELECT id_requester FROM friend_request WHERE ");
     }
 }

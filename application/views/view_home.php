@@ -103,7 +103,7 @@
                 <div class="absolute bg-gray-800 w-4/5 h-5/6 right-4 top-3 rounded-lg">
                     <form action="<?= base_url('posting/add') ?>" method="post">
 
-                        <textarea name="user_post" id="user_post" cols="" rows="10" placeholder="<?= $name . ' ' ?>Apa Yang Anda Pikirkan?" class="w-full rounded-md bg-white p-2 border-1 focus:border-0"></textarea>
+                        <textarea name="user_post" id="user_post" cols="" rows="10" placeholder="<?= $name . ' ' ?>Apa Yang Anda Pikirkan?" class="w-full rounded-md bg-white p-2 border-1 focus:border-0" required></textarea>
 
                         <button type="submit" class="absolute rounded-sm bottom-0 right-1 p-1">
                             <span class="material-icons text-4xl">

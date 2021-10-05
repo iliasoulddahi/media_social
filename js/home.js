@@ -8,3 +8,7 @@ function comentBtnExpandToInput() {
         $('#form-comment').hide('normal')
     }
 }
+
+function btnAddFriend() {
+    
+}
