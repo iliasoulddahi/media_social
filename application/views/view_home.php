@@ -172,17 +172,17 @@
     </div>
     <!-- notification info -->
     <div class="absolute bg-purple-200 w-full top-12 p-1 hidden" id="notification-info-addfriend">
-        <form action="<?= base_url('friend/search_friend') ?>" method="POST" class="flex justify-between items-center bg-blue-900 w-full h-10 border-b-2 border-black p-1 mb-2">
-            <input type="text" id="username" name="username" placeholder="Cari Teman">
-            <button type="submit" class="bg-green-300">Cari</button>
+        <form method="POST" class="flex justify-between items-center bg-blue-900 w-full h-10 border-b-2 border-black p-1 mb-2">
+            <input type="text" id="username_search" name="username_search" placeholder="Cari Teman">
+            <button type="submit" class="bg-green-300" id="form_search_friend">Cari</button>
         </form>
         <!-- form tambah teman -->
-        
-        <?php foreach($this->session->flashdata('search_friend_result') as $i):?>
-        <form action="<?= base_url('friend/add_friend') ?>" method="POST" class="flex justify-between items-center bg-blue-900 w-full h-10 border-b-2 border-black p-1 mb-2">
-            <div>Dony Siregar</div>
-            <button class="bg-green-300" name="receiver" value="312">accept</button>
-        </form>
+
+        <?php foreach ($this->session->flashdata('search_friend_result') as $i) : ?>
+            <form action="<?= base_url('friend/add_friend') ?>" method="POST" class="flex justify-between items-center bg-blue-900 w-full h-10 border-b-2 border-black p-1 mb-2">
+                <div>Dony Siregar</div>
+                <button class="bg-green-300" name="receiver" value="312" type="submit">accept</button>
+            </form>
         <?php endforeach; ?>
 
 
@@ -213,25 +213,35 @@
 
 
 
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 <script>
-    ambilData()
-    //AJAX
-    function ambilData(){
-        $.ajax({
-            type:'POST',
-            url:'<?= base_url('friend/search_friend')?>',
-            dataType: 'json',
-            succes: function(data){
-                console.log(data)
-            }
-        })
-    }
-    
-    
-    
-    
+    /**
+     * Api function
+     */
+
+    //mengirim search username di add friend ke
+    $(document).ready(function() {
+        $('#form_search_friend').click(function(e) {
+            e.preventDefault();
+            $.ajax({
+                url: '<?= base_url('friend/search_friend') ?>',
+                type: 'POST',
+                dataType:'json',
+                data: {
+                    username: $('#username_search').val(),
+                },
+                success: function(data) {
+                    console.log(data)
+                }
+            });
+        });
+    });
+</script>
+<script>
+    /**
+     * Dom Manipulation Function
+     */
     function show(n) {
         var el = document.querySelector(n);
         if (!el.style.display || el.style.display == 'none') {
@@ -240,7 +250,4 @@
             el.style.display = 'none'
         }
     }
-
-
-    
 </script>

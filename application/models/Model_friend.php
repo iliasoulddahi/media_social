@@ -34,6 +34,7 @@ class Model_friend extends CI_Model
     }
 
     public function search_friend($username){
-        return $this->db->query("SELECT username FROM users WHERE username='$username'")->result();
+        return $this->db->query("SELECT username FROM users WHERE username='$username'")->result_array();
+
     }
 }
