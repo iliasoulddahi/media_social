@@ -46,12 +46,12 @@
 </style>
 
 <!-- wrapper -->
-<div class="">
+<div class="mt-4">
     <!-- main wrapper -->
     <div class="custom-layout-main-wrapper">
         <!-- sidebar left -->
         <div class="left flex flex-col p-3">
-            <!-- online user tailwind grid -->
+
             <div class="w-full bg-gray-500 mb-3 shadow-xl">
                 <div class="text-2xl border-b border-gray-700">Teman</div>
                 <div class="flex flex-wrap items-center w-11/12 mx-auto mt-4">
@@ -95,6 +95,7 @@
                 <?php endif; ?>
             </div>
         </div>
+
         <!-- scrollable -->
         <!-- center main wrapper -->
         <div class="center overflow-y-scroll hide-scrollbar">
@@ -142,7 +143,7 @@
                     <button href="#" class="w-14 h-8 bg-blue-700 hover:bg-blue-300 rounded-lg text-center"><span class="material-icons text-blue-300 hover:text-blue-700 text-xl">
                             thumb_up
                         </span></button>
-                    <button onclick="comentBtnExpandToInput()" id="btn-masukan-komen" class="w-14 h-8 bg-blue-700 hover:bg-blue-300 rounded-lg text-center" id="btn-coment"><span class="material-icons text-blue-300 hover:text-blue-700 text-xl">
+                    <button onclick="showAndHide('#form-comment')" id="btn-masukan-komen" class="w-14 h-8 bg-blue-700 hover:bg-blue-300 rounded-lg text-center" id="btn-comment"><span class="material-icons text-blue-300 hover:text-blue-700 text-xl">
                             insert_comment
                         </span></button>
                 </div>
@@ -162,11 +163,84 @@
     </div>
 </div>
 
+<!-- navbar info - notification di paling bawah agar overide-->
+<div class="flex justify-between items-center absolute bg-blue-400 w-60 h-12 left-1/2 top-0 ">
 
-<form action="<?= base_url('friend/add_friend')?>" method="POST" class="flex bg-blue-900 w-28 h-28">
-        <div>Dony Siregar</div>
-        <button name="receiver" value="312">Add Him</button>
-</form>
+    <div onclick="show('#notification-info-addfriend')" class="flex w-10 h-10 transition duration-200 ease-in-out bg-blue-700 hover:bg-blue-300 transform hover:-translate-y-1 hover:scale-105 rounded-sm text-center"><a href="#"><span class="material-icons text-blue-300 hover:text-blue-700 text-4xl">
+                person_add_alt
+            </span></a>
+    </div>
+    <!-- notification info -->
+    <div class="absolute bg-purple-200 w-full top-12 p-1 hidden" id="notification-info-addfriend">
+        <form action="<?= base_url('friend/search_friend') ?>" method="POST" class="flex justify-between items-center bg-blue-900 w-full h-10 border-b-2 border-black p-1 mb-2">
+            <input type="text" id="username" name="username" placeholder="Cari Teman">
+            <button type="submit" class="bg-green-300">Cari</button>
+        </form>
+        <!-- form tambah teman -->
+        
+        <?php foreach($this->session->flashdata('search_friend_result') as $i):?>
+        <form action="<?= base_url('friend/add_friend') ?>" method="POST" class="flex justify-between items-center bg-blue-900 w-full h-10 border-b-2 border-black p-1 mb-2">
+            <div>Dony Siregar</div>
+            <button class="bg-green-300" name="receiver" value="312">accept</button>
+        </form>
+        <?php endforeach; ?>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="<?= base_url("js/home.js"); ?>"></script>
+
+    </div>
+    <div class="w-10 h-10 transition duration-200 ease-in-out bg-blue-700 hover:bg-blue-300 transform hover:-translate-y-1 hover:scale-105 rounded-sm text-center"><a href="#"><span class="material-icons text-blue-300 hover:text-blue-700 text-4xl">
+                groups
+            </span></a></div>
+
+    <div onclick="show('#notification-info-chat')" class="w-10 h-10 transition duration-200 ease-in-out bg-blue-700 hover:bg-blue-300 transform hover:-translate-y-1 hover:scale-105 rounded-sm text-center"><a href="#"><span class="material-icons text-blue-300 hover:text-blue-700 text-4xl">
+                chat
+            </span></a></div>
+    <!-- notification info chat-->
+    <div class="absolute bg-purple-200 w-full h-44 top-12 p-1 overflow-y-scroll hide-scrollbar hidden" id="notification-info-chat">
+        CHAT
+    </div>
+    <div onclick="show('#notification-info-notification-global')" class="w-10 h-10 transition duration-200 ease-in-out bg-blue-700 hover:bg-blue-300 transform hover:-translate-y-1 hover:scale-105 rounded-sm text-center"><a href="#"><span class="material-icons text-blue-300 hover:text-blue-700 text-4xl">
+                notifications_none
+            </span></a></div>
+    <!-- notification info notification global-->
+    <div class="absolute bg-purple-200 w-full h-44 top-12 -mr-60 p-1 overflow-y-scroll hide-scrollbar hidden" id="notification-info-notification-global">
+        <form action="<?= base_url('friend/accept_friend') ?>" method="POST" class="flex justify-between items-center bg-blue-900 w-full h-10 border-b-2 border-black p-1 mb-2">
+            <div>Dony Siregar</div>
+            <button class="bg-green-300" name="receiver" value="312">accept</button>
+        </form>
+    </div>
+
+</div>
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    ambilData()
+    //AJAX
+    function ambilData(){
+        $.ajax({
+            type:'POST',
+            url:'<?= base_url('friend/search_friend')?>',
+            dataType: 'json',
+            succes: function(data){
+                console.log(data)
+            }
+        })
+    }
+    
+    
+    
+    
+    function show(n) {
+        var el = document.querySelector(n);
+        if (!el.style.display || el.style.display == 'none') {
+            el.style.display = 'block'
+        } else {
+            el.style.display = 'none'
+        }
+    }
+
+
+    
+</script>

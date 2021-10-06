@@ -32,4 +32,8 @@ class Model_friend extends CI_Model
     public function get_requester_id(){
         return $this->db->query("SELECT id_requester FROM friend_request WHERE ");
     }
+
+    public function search_friend($username){
+        return $this->db->query("SELECT username FROM users WHERE username='$username'")->result();
+    }
 }

@@ -19,6 +19,12 @@ class Friend extends CI_Controller
         $this->load->view('view_profile');
     }
 
+    public function search_friend(){
+        $search = $this->input->post('username');
+        $search_friend_result = $this->model_friend->search_friend($search);
+        echo json_encode($search_friend_result);
+    }
+
     public function add_friend()
     {
         $requester = $this->session->userdata('user_id');

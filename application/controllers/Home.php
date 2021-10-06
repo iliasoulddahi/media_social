@@ -22,8 +22,8 @@ class Home extends CI_Controller
         $postingan = $this->model_posting->get_all_post($this->session->userdata('user_id'));
 
         $data = [
-            'title' => $data_from_session_id['name'],
-            'name' => $data_from_session_id['name'],
+            'title' => $data_from_session_id['username'],
+            'name' => $data_from_session_id['username'],
             'profil_image' => $data_from_session_id['profil_image'],
             'post_anda' => $postingan
         ];

@@ -120,7 +120,7 @@ class Auth extends CI_Controller
             }
 
             $register_data = [
-                'name' =>            htmlspecialchars($this->input->post('name', true)),
+                'username' =>        htmlspecialchars($this->input->post('name', true)),
                 'email' =>           htmlspecialchars($this->input->post('email', true)),
                 'password' =>        password_hash($this->input->post('password'), PASSWORD_DEFAULT),
                 'gender' =>          $this->input->post('gender'),
