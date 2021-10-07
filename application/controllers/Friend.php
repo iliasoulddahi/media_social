@@ -19,10 +19,27 @@ class Friend extends CI_Controller
         $this->load->view('view_profile');
     }
 
-    public function search_friend(){
-        $search = $this->input->post('username');
+    public function search_friend()
+    {
+        $base_url_img = base_url('assets/img/');
+        $search = $this->input->get('keyword');
         $search_friend_result = $this->model_friend->search_friend($search);
-        echo json_encode($search_friend_result);
+        if ($search == "") {
+            return;
+        }
+        $output = '';
+        foreach ($search_friend_result as $i) {
+        $output .= <<<EOD
+        <form action="<?= base_url('friend/add_friend') ?>" method="POST" class="flex justify-between items-center bg-blue-900 w-full h-10 border-b-2 border-black p-1 mb-2">
+            <img src="$base_url_img$i->profile_image" class="w-8 h-8">
+            <div>$i->username</div>
+            <button class="bg-green-300" name="receiver" value="$i->user_id" type="submit"><span class="material-icons">
+            person_add_alt
+            </span></button>
+        </form>
+      EOD;
+        }
+        echo $output;
     }
 
     public function add_friend()
@@ -34,6 +51,5 @@ class Friend extends CI_Controller
 
     public function accept_friend()
     {
-        
     }
 }

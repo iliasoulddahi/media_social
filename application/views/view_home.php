@@ -81,14 +81,14 @@
                         <div class="w-full bg-red-400 rounded-2xl mt-3 pb-2">
                             <div class="flex justify-between w-full">
                                 <div class="flex items-center">
-                                    <img src="<?= base_url('assets/img/' . $profil_image) ?>" alt="" class="w-10 h-10 bg-white rounded-tl-xl">
+                                    <img src="<?= base_url('assets/img/' . $profile_image) ?>" alt="" class="w-10 h-10 bg-white rounded-tl-xl">
                                     <div class="text-lg"><?= $name; ?></div>
                                 </div>
-                                <div class="font-light mt-4 mr-3"><?= date('Y/m/d H:i', $p['date']) ?></div>
+                                <div class="font-light mt-4 mr-3"><?= $p['date_created'] ?></div>
                             </div>
                             <!-- content postingan anda -->
                             <div class="mt-2">
-                                <?= $p['content'] ?>
+                                <?= $p['post_content'] ?>
                             </div>
                         </div>
                     <?php endforeach; ?>
@@ -100,7 +100,7 @@
         <!-- center main wrapper -->
         <div class="center overflow-y-scroll hide-scrollbar">
             <div class="bg-gray-500 w-full h-72 relative">
-                <img src="<?= base_url('assets/img/' . $profil_image) ?>" alt="" class="transition duration-500 ease-in-out bg-blue-600 hover:bg-red-600 transform hover:-translate-y-1 hover:scale-110 absolute w-14 h-14 rounded-full bottom-2 left-2">
+                <img src="<?= base_url('assets/img/' . $profile_image) ?>" alt="" class="transition duration-500 ease-in-out bg-blue-600 hover:bg-red-600 transform hover:-translate-y-1 hover:scale-110 absolute w-14 h-14 rounded-full bottom-2 left-2">
                 <div class="absolute bg-gray-800 w-4/5 h-5/6 right-4 top-3 rounded-lg">
                     <form action="<?= base_url('posting/add') ?>" method="post">
 
@@ -129,7 +129,7 @@
             <div class="w-full bg-red-400 rounded-2xl mt-3 pb-3 relative">
                 <div class="flex justify-between w-full">
                     <div class="flex items-center">
-                        <img src="<?= base_url('assets/img/' . $profil_image) ?>" alt="" class="w-16 h-16 bg-white rounded-tl-xl">
+                        <img src="<?= base_url('assets/img/' . $profile_image) ?>" alt="" class="w-16 h-16 bg-white rounded-tl-xl">
                         <div class="text-xl"><?= $name; ?></div>
                     </div>
                     <div class="font-light mt-4 mr-3">01/01/2021-12.00</div>
@@ -164,7 +164,7 @@
 </div>
 
 <!-- navbar info - notification di paling bawah agar overide-->
-<div class="flex justify-between items-center absolute bg-blue-400 w-60 h-12 left-1/2 top-0 ">
+<div class="flex justify-between items-center absolute bg-blue-400 w-72 h-12 left-1/2 top-0 ">
 
     <div onclick="show('#notification-info-addfriend')" class="flex w-10 h-10 transition duration-200 ease-in-out bg-blue-700 hover:bg-blue-300 transform hover:-translate-y-1 hover:scale-105 rounded-sm text-center"><a href="#"><span class="material-icons text-blue-300 hover:text-blue-700 text-4xl">
                 person_add_alt
@@ -173,19 +173,13 @@
     <!-- notification info -->
     <div class="absolute bg-purple-200 w-full top-12 p-1 hidden" id="notification-info-addfriend">
         <form method="POST" class="flex justify-between items-center bg-blue-900 w-full h-10 border-b-2 border-black p-1 mb-2">
-            <input type="text" id="username_search" name="username_search" placeholder="Cari Teman">
-            <button type="submit" class="bg-green-300" id="form_search_friend">Cari</button>
+            <input type="text" id="keyword_add_friend_search" name="keyword_add_friend_search" placeholder="Cari Teman">
+            <button type="submit" class="bg-green-300" id="btn_search_friend">Cari</button>
         </form>
         <!-- form tambah teman -->
-
-        <?php foreach ($this->session->flashdata('search_friend_result') as $i) : ?>
-            <form action="<?= base_url('friend/add_friend') ?>" method="POST" class="flex justify-between items-center bg-blue-900 w-full h-10 border-b-2 border-black p-1 mb-2">
-                <div>Dony Siregar</div>
-                <button class="bg-green-300" name="receiver" value="312" type="submit">accept</button>
-            </form>
-        <?php endforeach; ?>
-
-
+        <div id="add_friend_form">
+            
+        </div>
     </div>
     <div class="w-10 h-10 transition duration-200 ease-in-out bg-blue-700 hover:bg-blue-300 transform hover:-translate-y-1 hover:scale-105 rounded-sm text-center"><a href="#"><span class="material-icons text-blue-300 hover:text-blue-700 text-4xl">
                 groups
@@ -219,26 +213,19 @@
     /**
      * Api function
      */
-
-    //mengirim search username di add friend ke
-    $(document).ready(function() {
-        $('#form_search_friend').click(function(e) {
-            e.preventDefault();
+    //add friend search
+    $(document).ready(function(){
+        $('#keyword_add_friend_search').on('keyup', function(){
             $.ajax({
-                url: '<?= base_url('friend/search_friend') ?>',
-                type: 'POST',
-                dataType:'json',
-                data: {
-                    username: $('#username_search').val(),
-                },
-                success: function(data) {
-                    console.log(data)
+                url: "<?=base_url('friend/search_friend')?>",
+                method:'GET',
+                data:{'keyword':$('#keyword_add_friend_search').val()},
+                success:function(data){
+                    $('#add_friend_form').html(data);
                 }
-            });
-        });
-    });
-</script>
-<script>
+            })
+        })
+    }) 
     /**
      * Dom Manipulation Function
      */

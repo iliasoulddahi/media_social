@@ -23,9 +23,8 @@ class Posting extends CI_Controller
     {
         $posting = '<p>' . $this->input->post('user_post') . '<p>';
         $insert_to_post = [
-            'id' => $this->session->userdata('user_id'),
-            'content' => $posting,
-            'date' => time()
+            'user_id' => $this->session->userdata('user_id'),
+            'post_content' => $posting,
         ];
         $this->model_posting->insert_to_post($insert_to_post);
         $this->session->set_flashdata('message', 'Posting Berhasil');

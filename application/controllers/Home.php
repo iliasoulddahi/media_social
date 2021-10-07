@@ -24,7 +24,7 @@ class Home extends CI_Controller
         $data = [
             'title' => $data_from_session_id['username'],
             'name' => $data_from_session_id['username'],
-            'profil_image' => $data_from_session_id['profil_image'],
+            'profile_image' => $data_from_session_id['profile_image'],
             'post_anda' => $postingan
         ];
         $this->load->view("layout_top", $data);

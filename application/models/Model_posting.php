@@ -25,6 +25,6 @@ class Model_posting extends CI_Model
 
     public function get_all_post($id)
     {
-        return $this->db->query("SELECT * FROM post WHERE id=$id ORDER BY date DESC")->result_array();
+        return $this->db->query("SELECT * FROM post WHERE user_id=$id ORDER BY date_created DESC")->result_array();
     }
 }

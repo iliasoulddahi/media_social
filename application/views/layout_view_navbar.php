@@ -6,7 +6,7 @@
         </div>
     </div>
     <div class="flex justify-between items-center">
-        <img src="<?= base_url('assets/img/' . $profil_image) ?>" alt="" class="w-12 h-12 rounded-full mr-3">
+        <img src="<?= base_url('assets/img/' . $profile_image) ?>" alt="" class="w-12 h-12 rounded-full mr-3">
         <div class="mr-14"><?= $name ?></div>
     </div>
 </div>

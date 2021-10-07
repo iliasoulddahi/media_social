@@ -52,7 +52,7 @@ class Auth extends CI_Controller
                 if (password_verify($data_input['password'], $user['password'])) {
 
                     $data = [
-                        'user_id' => $user['id'],
+                        'user_id' => $user['user_id'],
                     ];
 
                     // set user data
@@ -124,9 +124,8 @@ class Auth extends CI_Controller
                 'email' =>           htmlspecialchars($this->input->post('email', true)),
                 'password' =>        password_hash($this->input->post('password'), PASSWORD_DEFAULT),
                 'gender' =>          $this->input->post('gender'),
-                'profil_image' =>    $default_profil_image,
+                'profile_image' =>    $default_profil_image,
                 'verified' =>       '1',
-                'date_created' =>    time()
             ];
 
             // memasukan ke database
