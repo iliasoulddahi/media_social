@@ -25,7 +25,6 @@ class Model_friend extends CI_Model
 
     public function insert_to_friend_request($requester_id, $receiver_id)
     {
-        $time = time();
         return $this->db->query("INSERT INTO friend_request (requester_id, receiver_id ) VALUES ('$requester_id', '$receiver_id')");
     }
 

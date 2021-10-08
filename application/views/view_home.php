@@ -143,7 +143,7 @@
                     <button href="#" class="w-14 h-8 bg-blue-700 hover:bg-blue-300 rounded-lg text-center"><span class="material-icons text-blue-300 hover:text-blue-700 text-xl">
                             thumb_up
                         </span></button>
-                    <button onclick="showAndHide('#form-comment')" id="btn-masukan-komen" class="w-14 h-8 bg-blue-700 hover:bg-blue-300 rounded-lg text-center" id="btn-comment"><span class="material-icons text-blue-300 hover:text-blue-700 text-xl">
+                    <button onclick="show('#form-comment')" id="btn-masukan-komen" class="w-14 h-8 bg-blue-700 hover:bg-blue-300 rounded-lg text-center" id="btn-comment"><span class="material-icons text-blue-300 hover:text-blue-700 text-xl">
                             insert_comment
                         </span></button>
                 </div>
@@ -164,37 +164,42 @@
 </div>
 
 <!-- navbar info - notification di paling bawah agar overide-->
-<div class="flex justify-between items-center absolute bg-blue-400 w-72 h-12 left-1/2 top-0 ">
+<div class="flex justify-between items-center absolute bg-blue-400 w-96 h-12 left-1/2 top-0 ">
 
-    <div onclick="show('#notification-info-addfriend')" class="flex w-10 h-10 transition duration-200 ease-in-out bg-blue-700 hover:bg-blue-300 transform hover:-translate-y-1 hover:scale-105 rounded-sm text-center"><a href="#"><span class="material-icons text-blue-300 hover:text-blue-700 text-4xl">
+    <div id="notification-addfriend" class="flex w-10 h-10 transition duration-200 ease-in-out bg-blue-700 hover:bg-blue-300 transform hover:-translate-y-1 hover:scale-105 rounded-sm text-center"><a href="#"><span class="material-icons text-blue-300 hover:text-blue-700 text-4xl">
                 person_add_alt
             </span></a>
     </div>
-    <!-- notification info -->
-    <div class="absolute bg-purple-200 w-full top-12 p-1 hidden" id="notification-info-addfriend">
+
+    <div class="w-10 h-10 transition duration-200 ease-in-out bg-blue-700 hover:bg-blue-300 transform hover:-translate-y-1 hover:scale-105 rounded-sm text-center"><a href="#"><span class="material-icons text-blue-300 hover:text-blue-700 text-4xl">
+                groups
+            </span></a></div>
+
+    <div id="notification-chat" onclick="show('#notification-info-chat')" class="w-10 h-10 transition duration-200 ease-in-out bg-blue-700 hover:bg-blue-300 transform hover:-translate-y-1 hover:scale-105 rounded-sm text-center"><a href="#"><span class="material-icons text-blue-300 hover:text-blue-700 text-4xl">
+                chat
+            </span></a></div>
+
+    <div id="notification-global" onclick="show('#notification-info-notification-global')" class="w-10 h-10 transition duration-200 ease-in-out bg-blue-700 hover:bg-blue-300 transform hover:-translate-y-1 hover:scale-105 rounded-sm text-center"><a href="#"><span class="material-icons text-blue-300 hover:text-blue-700 text-4xl">
+                notifications_none
+            </span></a></div>
+
+    <!-- notification info add friend-->
+    <div class="absolute bg-purple-200 w-full top-12 p-1" id="notification-info-addfriend">
         <form method="POST" class="flex justify-between items-center bg-blue-900 w-full h-10 border-b-2 border-black p-1 mb-2">
             <input type="text" id="keyword_add_friend_search" name="keyword_add_friend_search" placeholder="Cari Teman">
             <button type="submit" class="bg-green-300" id="btn_search_friend">Cari</button>
         </form>
         <!-- form tambah teman -->
         <div id="add_friend_form">
-            
+
         </div>
     </div>
-    <div class="w-10 h-10 transition duration-200 ease-in-out bg-blue-700 hover:bg-blue-300 transform hover:-translate-y-1 hover:scale-105 rounded-sm text-center"><a href="#"><span class="material-icons text-blue-300 hover:text-blue-700 text-4xl">
-                groups
-            </span></a></div>
 
-    <div onclick="show('#notification-info-chat')" class="w-10 h-10 transition duration-200 ease-in-out bg-blue-700 hover:bg-blue-300 transform hover:-translate-y-1 hover:scale-105 rounded-sm text-center"><a href="#"><span class="material-icons text-blue-300 hover:text-blue-700 text-4xl">
-                chat
-            </span></a></div>
     <!-- notification info chat-->
     <div class="absolute bg-purple-200 w-full h-44 top-12 p-1 overflow-y-scroll hide-scrollbar hidden" id="notification-info-chat">
         CHAT
     </div>
-    <div onclick="show('#notification-info-notification-global')" class="w-10 h-10 transition duration-200 ease-in-out bg-blue-700 hover:bg-blue-300 transform hover:-translate-y-1 hover:scale-105 rounded-sm text-center"><a href="#"><span class="material-icons text-blue-300 hover:text-blue-700 text-4xl">
-                notifications_none
-            </span></a></div>
+
     <!-- notification info notification global-->
     <div class="absolute bg-purple-200 w-full h-44 top-12 -mr-60 p-1 overflow-y-scroll hide-scrollbar hidden" id="notification-info-notification-global">
         <form action="<?= base_url('friend/accept_friend') ?>" method="POST" class="flex justify-between items-center bg-blue-900 w-full h-10 border-b-2 border-black p-1 mb-2">
@@ -202,8 +207,11 @@
             <button class="bg-green-300" name="receiver" value="312">accept</button>
         </form>
     </div>
-
+</div>                    
 </div>
+
+<div>
+    
 
 
 
@@ -213,28 +221,76 @@
     /**
      * Api function
      */
-    //add friend search
-    $(document).ready(function(){
-        $('#keyword_add_friend_search').on('keyup', function(){
+    //friend search
+    $(document).ready(function() {
+        $('#keyword_add_friend_search').on('keyup', function() {
             $.ajax({
-                url: "<?=base_url('friend/search_friend')?>",
-                method:'GET',
-                data:{'keyword':$('#keyword_add_friend_search').val()},
-                success:function(data){
+                url: "<?= base_url('friend/search_friend') ?>",
+                method: 'GET',
+                data: {
+                    'keyword': $('#keyword_add_friend_search').val()
+                },
+                success: function(data) {
                     $('#add_friend_form').html(data);
                 }
             })
-        })
-    }) 
+        });
+    })
     /**
      * Dom Manipulation Function
      */
-    function show(n) {
+    $(document).ready(function(e) {
+
+        const notifAddFriend = $("#notification-addfriend");
+        const notifInfoAddFriend =$('#notification-info-addfriend')   
+        notifAddFriend.click(function(e) {
+            notifInfoAddFriend.toggle();
+        });
+        $(document).mouseup(function(e) {
+            if (!notifInfoAddFriend.is(e.target) && notifInfoAddFriend.has(e.target).length === 0 && !notifAddFriend.is(e.target) && notifAddFriend.has(e.target).length === 0) {
+                notifInfoAddFriend.hide();
+            }
+        });
+
+        const notifChat = $('#notification-chat')
+        const notifInfoChat = $("#notification-info-chat")
+        notifChat.click(function(e) {
+            notifInfoChat.toggle();
+        });
+        $(document).mouseup(function(e) {
+            if (!notifInfoChat.is(e.target) && notifInfoChat.has(e.target).length === 0 && !notifChat.is(e.target) && notifChat.has(e.target).length === 0) {
+                notifInfoChat.hide();
+            }
+        });
+
+        const notifGlobal = $('#notification-global')
+        const notifInfoGlobal = $("#notification-info-notification-global")
+        notifGlobal.click(function(e) {
+            notifInfoGlobal.toggle();
+        });
+        $(document).mouseup(function(e) {
+            if (!notifInfoGlobal.is(e.target) && notifInfoGlobal.has(e.target).length === 0 && !notifGlobal.is(e.target) && notifGlobal.has(e.target).length === 0) {
+                notifInfoGlobal.hide();
+            }
+        });
+
+    })
+
+    function showaa(n) {
         var el = document.querySelector(n);
-        if (!el.style.display || el.style.display == 'none') {
-            el.style.display = 'block'
+        if ($(n).is(':hidden')) {
+            $(n).show('normal')
         } else {
-            el.style.display = 'none'
+            $(n).hide('normal')
+
+            $(document).click(function(e) {
+                var container = $(n);
+
+                // if the target of the click isn't the container nor a descendant of the container
+                if (!container.is(e.target) && container.has(e.target).length === 0) {
+                    container.hide();
+                }
+            });
         }
     }
 </script>
