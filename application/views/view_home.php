@@ -143,7 +143,7 @@
                     <button href="#" class="w-14 h-8 bg-blue-700 hover:bg-blue-300 rounded-lg text-center"><span class="material-icons text-blue-300 hover:text-blue-700 text-xl">
                             thumb_up
                         </span></button>
-                    <button onclick="show('#form-comment')" id="btn-masukan-komen" class="w-14 h-8 bg-blue-700 hover:bg-blue-300 rounded-lg text-center" id="btn-comment"><span class="material-icons text-blue-300 hover:text-blue-700 text-xl">
+                    <button id="btn-comment" class="w-14 h-8 bg-blue-700 hover:bg-blue-300 rounded-lg text-center" id="btn-comment"><span class="material-icons text-blue-300 hover:text-blue-700 text-xl">
                             insert_comment
                         </span></button>
                 </div>
@@ -166,22 +166,22 @@
 <!-- navbar info - notification di paling bawah agar overide-->
 <div class="flex justify-between items-center absolute bg-blue-400 w-96 h-12 left-1/2 top-0 ">
 
-    <div id="notification-addfriend" class="flex w-10 h-10 transition duration-200 ease-in-out bg-blue-700 hover:bg-blue-300 transform hover:-translate-y-1 hover:scale-105 rounded-sm text-center"><a href="#"><span class="material-icons text-blue-300 hover:text-blue-700 text-4xl">
+    <button id="notification-addfriend" class="flex w-10 h-10 transition duration-200 ease-in-out bg-blue-700 hover:bg-blue-300 transform hover:-translate-y-1 hover:scale-105 rounded-sm text-center"><span class="material-icons text-blue-300 hover:text-blue-700 text-4xl">
                 person_add_alt
-            </span></a>
-    </div>
+            </span>
+    </button>
 
-    <div class="w-10 h-10 transition duration-200 ease-in-out bg-blue-700 hover:bg-blue-300 transform hover:-translate-y-1 hover:scale-105 rounded-sm text-center"><a href="#"><span class="material-icons text-blue-300 hover:text-blue-700 text-4xl">
+    <button class="w-10 h-10 transition duration-200 ease-in-out bg-blue-700 hover:bg-blue-300 transform hover:-translate-y-1 hover:scale-105 rounded-sm text-center"><span class="material-icons text-blue-300 hover:text-blue-700 text-4xl">
                 groups
-            </span></a></div>
+            </span></button>
 
-    <div id="notification-chat" onclick="show('#notification-info-chat')" class="w-10 h-10 transition duration-200 ease-in-out bg-blue-700 hover:bg-blue-300 transform hover:-translate-y-1 hover:scale-105 rounded-sm text-center"><a href="#"><span class="material-icons text-blue-300 hover:text-blue-700 text-4xl">
+    <button id="notification-chat" class="w-10 h-10 transition duration-200 ease-in-out bg-blue-700 hover:bg-blue-300 transform hover:-translate-y-1 hover:scale-105 rounded-sm text-center"><span class="material-icons text-blue-300 hover:text-blue-700 text-4xl">
                 chat
-            </span></a></div>
+            </span></button>
 
-    <div id="notification-global" onclick="show('#notification-info-notification-global')" class="w-10 h-10 transition duration-200 ease-in-out bg-blue-700 hover:bg-blue-300 transform hover:-translate-y-1 hover:scale-105 rounded-sm text-center"><a href="#"><span class="material-icons text-blue-300 hover:text-blue-700 text-4xl">
+    <button id="notification-global" class="w-10 h-10 transition duration-200 ease-in-out bg-blue-700 hover:bg-blue-300 transform hover:-translate-y-1 hover:scale-105 rounded-sm text-center"><span class="material-icons text-blue-300 hover:text-blue-700 text-4xl">
                 notifications_none
-            </span></a></div>
+            </span></button>
 
     <!-- notification info add friend-->
     <div class="absolute bg-purple-200 w-full top-12 p-1" id="notification-info-addfriend">
@@ -222,7 +222,7 @@
      * Api function
      */
     //friend search
-    $(document).ready(function() {
+    $(document).ready(function(e) {
         $('#keyword_add_friend_search').on('keyup', function() {
             $.ajax({
                 url: "<?= base_url('friend/search_friend') ?>",
@@ -235,6 +235,8 @@
                 }
             })
         });
+
+        
     })
     /**
      * Dom Manipulation Function
@@ -273,24 +275,12 @@
                 notifInfoGlobal.hide();
             }
         });
+        //show insert comment
+        const btnComment = $('#btn-comment')
+        const formComment = $("#form-comment")
+        btnComment.click(function(e) {
+            formComment.toggle();
+        });
 
     })
-
-    function showaa(n) {
-        var el = document.querySelector(n);
-        if ($(n).is(':hidden')) {
-            $(n).show('normal')
-        } else {
-            $(n).hide('normal')
-
-            $(document).click(function(e) {
-                var container = $(n);
-
-                // if the target of the click isn't the container nor a descendant of the container
-                if (!container.is(e.target) && container.has(e.target).length === 0) {
-                    container.hide();
-                }
-            });
-        }
-    }
 </script>
