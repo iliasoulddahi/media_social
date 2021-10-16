@@ -19,6 +19,11 @@ class Model_user extends CI_Model
     {
         return $this->db->get_where('users', ['user_id' => $id])->row_array();
     }
+    public function get_all_from_id_2($id)
+    {
+        $query = $this->db->get_where('users', ['user_id' => $id])->result();
+        return $query[0];
+    }
 
     //insert
     public function insert($data)

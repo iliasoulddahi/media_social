@@ -1,26 +1,4 @@
 <!-- PEMBUNGKUS UTAMA -->
-<style>
-    /* Chrome, Safari and Opera */
-    .hide-scrollbar::-webkit-scrollbar {
-        display: none;
-    }
-
-    /* IE, Edge and Firefox */
-    .hide-scrollbar {
-        -ms-overflow-style: none;
-        /* IE and Edge */
-        scrollbar-width: none;
-        /* Firefox */
-    }
-
-    textarea {
-        resize: none;
-    }
-
-    .w-50rem{
-        width: 50rem;
-    }
-</style>
 
 <!-- wrapper -->
 <div class="mt-4">
@@ -28,25 +6,25 @@
     <div class="flex justify-center items-start">
         <!-- sidebar left -->
         <div class="flex flex-col p-3 w-28 h-screen">
-                <div class="flex flex-wrap items-center h-screen w-11/12 overflow-y-scroll hide-scrollbar">
-                    <div class="bg-white rounded-full m-auto mb-3 w-8 sm:w-10 md:w-14 xl:w-16 h-8 sm:h-10 md:h-14 xl:h-16"></div>
-                    <div class="bg-white rounded-full m-auto mb-3 w-8 sm:w-10 md:w-14 xl:w-16 h-8 sm:h-10 md:h-14 xl:h-16"></div>
-                    <div class="bg-white rounded-full m-auto mb-3 w-8 sm:w-10 md:w-14 xl:w-16 h-8 sm:h-10 md:h-14 xl:h-16"></div>
-                    <div class="bg-white rounded-full m-auto mb-3 w-8 sm:w-10 md:w-14 xl:w-16 h-8 sm:h-10 md:h-14 xl:h-16"></div>
-                    <div class="bg-white rounded-full m-auto mb-3 w-8 sm:w-10 md:w-14 xl:w-16 h-8 sm:h-10 md:h-14 xl:h-16"></div>
-                    <div class="bg-white rounded-full m-auto mb-3 w-8 sm:w-10 md:w-14 xl:w-16 h-8 sm:h-10 md:h-14 xl:h-16"></div>
-                    <div class="bg-white rounded-full m-auto mb-3 w-8 sm:w-10 md:w-14 xl:w-16 h-8 sm:h-10 md:h-14 xl:h-16"></div>
-                    <div class="bg-white rounded-full m-auto mb-3 w-8 sm:w-10 md:w-14 xl:w-16 h-8 sm:h-10 md:h-14 xl:h-16"></div>
-                    <div class="bg-white rounded-full m-auto mb-3 w-8 sm:w-10 md:w-14 xl:w-16 h-8 sm:h-10 md:h-14 xl:h-16"></div>
-                    <div class="bg-white rounded-full m-auto mb-3 w-8 sm:w-10 md:w-14 xl:w-16 h-8 sm:h-10 md:h-14 xl:h-16"></div>
-                    <div class="bg-white rounded-full m-auto mb-3 w-8 sm:w-10 md:w-14 xl:w-16 h-8 sm:h-10 md:h-14 xl:h-16"></div>
-                    <div class="bg-white rounded-full m-auto mb-3 w-8 sm:w-10 md:w-14 xl:w-16 h-8 sm:h-10 md:h-14 xl:h-16"></div>
-                    <div class="bg-white rounded-full m-auto mb-3 w-8 sm:w-10 md:w-14 xl:w-16 h-8 sm:h-10 md:h-14 xl:h-16"></div>
-                    <div class="bg-white rounded-full m-auto mb-3 w-8 sm:w-10 md:w-14 xl:w-16 h-8 sm:h-10 md:h-14 xl:h-16"></div>
-                    <div class="bg-white rounded-full m-auto mb-3 w-8 sm:w-10 md:w-14 xl:w-16 h-8 sm:h-10 md:h-14 xl:h-16"></div>
-                    <div class="bg-white rounded-full m-auto mb-3 w-8 sm:w-10 md:w-14 xl:w-16 h-8 sm:h-10 md:h-14 xl:h-16"></div>
+            <div class="flex flex-wrap items-center h-screen w-11/12 overflow-y-scroll hide-scrollbar">
+                <div class="bg-white rounded-full m-auto mb-3 w-8 sm:w-10 md:w-14 xl:w-16 h-8 sm:h-10 md:h-14 xl:h-16"></div>
+                <div class="bg-white rounded-full m-auto mb-3 w-8 sm:w-10 md:w-14 xl:w-16 h-8 sm:h-10 md:h-14 xl:h-16"></div>
+                <div class="bg-white rounded-full m-auto mb-3 w-8 sm:w-10 md:w-14 xl:w-16 h-8 sm:h-10 md:h-14 xl:h-16"></div>
+                <div class="bg-white rounded-full m-auto mb-3 w-8 sm:w-10 md:w-14 xl:w-16 h-8 sm:h-10 md:h-14 xl:h-16"></div>
+                <div class="bg-white rounded-full m-auto mb-3 w-8 sm:w-10 md:w-14 xl:w-16 h-8 sm:h-10 md:h-14 xl:h-16"></div>
+                <div class="bg-white rounded-full m-auto mb-3 w-8 sm:w-10 md:w-14 xl:w-16 h-8 sm:h-10 md:h-14 xl:h-16"></div>
+                <div class="bg-white rounded-full m-auto mb-3 w-8 sm:w-10 md:w-14 xl:w-16 h-8 sm:h-10 md:h-14 xl:h-16"></div>
+                <div class="bg-white rounded-full m-auto mb-3 w-8 sm:w-10 md:w-14 xl:w-16 h-8 sm:h-10 md:h-14 xl:h-16"></div>
+                <div class="bg-white rounded-full m-auto mb-3 w-8 sm:w-10 md:w-14 xl:w-16 h-8 sm:h-10 md:h-14 xl:h-16"></div>
+                <div class="bg-white rounded-full m-auto mb-3 w-8 sm:w-10 md:w-14 xl:w-16 h-8 sm:h-10 md:h-14 xl:h-16"></div>
+                <div class="bg-white rounded-full m-auto mb-3 w-8 sm:w-10 md:w-14 xl:w-16 h-8 sm:h-10 md:h-14 xl:h-16"></div>
+                <div class="bg-white rounded-full m-auto mb-3 w-8 sm:w-10 md:w-14 xl:w-16 h-8 sm:h-10 md:h-14 xl:h-16"></div>
+                <div class="bg-white rounded-full m-auto mb-3 w-8 sm:w-10 md:w-14 xl:w-16 h-8 sm:h-10 md:h-14 xl:h-16"></div>
+                <div class="bg-white rounded-full m-auto mb-3 w-8 sm:w-10 md:w-14 xl:w-16 h-8 sm:h-10 md:h-14 xl:h-16"></div>
+                <div class="bg-white rounded-full m-auto mb-3 w-8 sm:w-10 md:w-14 xl:w-16 h-8 sm:h-10 md:h-14 xl:h-16"></div>
+                <div class="bg-white rounded-full m-auto mb-3 w-8 sm:w-10 md:w-14 xl:w-16 h-8 sm:h-10 md:h-14 xl:h-16"></div>
 
-                </div>
+            </div>
         </div>
 
         <!-- scrollable -->
@@ -120,21 +98,21 @@
 <div class="flex justify-between items-center absolute bg-blue-400 w-96 h-12 left-1/2 top-0 ">
 
     <button id="notification-addfriend" class="flex w-10 h-10 transition duration-200 ease-in-out bg-blue-700 hover:bg-blue-300 transform hover:-translate-y-1 hover:scale-105 rounded-sm text-center"><span class="material-icons text-blue-300 hover:text-blue-700 text-4xl">
-                person_add_alt
-            </span>
+            person_add_alt
+        </span>
     </button>
 
     <button class="w-10 h-10 transition duration-200 ease-in-out bg-blue-700 hover:bg-blue-300 transform hover:-translate-y-1 hover:scale-105 rounded-sm text-center"><span class="material-icons text-blue-300 hover:text-blue-700 text-4xl">
-                groups
-            </span></button>
+            groups
+        </span></button>
 
     <button id="notification-chat" class="w-10 h-10 transition duration-200 ease-in-out bg-blue-700 hover:bg-blue-300 transform hover:-translate-y-1 hover:scale-105 rounded-sm text-center"><span class="material-icons text-blue-300 hover:text-blue-700 text-4xl">
-                chat
-            </span></button>
+            chat
+        </span></button>
 
     <button id="notification-global" class="w-10 h-10 transition duration-200 ease-in-out bg-blue-700 hover:bg-blue-300 transform hover:-translate-y-1 hover:scale-105 rounded-sm text-center"><span class="material-icons text-blue-300 hover:text-blue-700 text-4xl">
-                notifications_none
-            </span></button>
+            notifications_none
+        </span></button>
 
     <!-- notification info add friend-->
     <div class="absolute bg-purple-200 w-full top-0 hidden" id="notification-info-addfriend">
@@ -154,85 +132,94 @@
 
     <!-- notification info notification global-->
     <div class="absolute bg-purple-200 w-full h-44 top-12 -mr-60 p-1 overflow-y-scroll hide-scrollbar hidden" id="notification-info-notification-global">
-        <form action="<?= base_url('friend/accept_friend') ?>" method="POST" class="flex justify-between items-center bg-blue-900 w-full h-10 border-b-2 border-black p-1 mb-2">
-            <div>Dony Siregar</div>
-            <button class="bg-green-300" name="receiver" value="312">accept</button>
-        </form>
+        <div id="notification-info-notification">
+
+        </div>
     </div>
-</div>                    
+</div>
 </div>
 
 <div>
-    
 
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-<script>
-    /**
-     * Api function
-     */
-    //friend search
-    $(document).ready(function(e) {
-        $('#keyword_add_friend_search').on('keyup', function() {
-            $.ajax({
-                url: "<?= base_url('friend/search_friend') ?>",
-                method: 'GET',
-                data: {
-                    'keyword': $('#keyword_add_friend_search').val()
-                },
-                success: function(data) {
-                    $('#add_friend_form').html(data);
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+        /**
+         * Api function
+         */
+        //friend search
+        $(document).ready(function(e) {
+            $('#keyword_add_friend_search').on('keyup', function() {
+                $.ajax({
+                    url: "<?= base_url('friend/search_friend') ?>",
+                    method: 'GET',
+                    data: {
+                        'keyword': $('#keyword_add_friend_search').val()
+                    },
+                    success: function(data) {
+                        $('#add_friend_form').html(data);
+                    }
+                })
+            });
+        })
+
+        $.ajax({
+            url: "<?= base_url('notification') ?>",
+            method: 'GET',
+            success: function(data) {
+                $('#notification-info-notification').html(data);
+            }
+        })
+        /**
+         * Dom Manipulation Function
+         */
+        $(document).ready(function(e) {
+
+            const notifAddFriend = $("#notification-addfriend");
+            const notifInfoAddFriend = $('#notification-info-addfriend')
+            notifAddFriend.click(function(e) {
+                notifInfoAddFriend.animate({
+                    width: "show"
+                });
+            });
+            $(document).mouseup(function(e) {
+                if (!notifInfoAddFriend.is(e.target) && notifInfoAddFriend.has(e.target).length === 0 && !notifAddFriend.is(e.target) && notifAddFriend.has(e.target).length === 0) {
+                    notifInfoAddFriend.animate({
+                        width: "hide"
+                    });
                 }
-            })
-        });
+            });
 
-        
-    })
-    /**
-     * Dom Manipulation Function
-     */
-    $(document).ready(function(e) {
+            const notifChat = $('#notification-chat')
+            const notifInfoChat = $("#notification-info-chat")
+            notifChat.click(function(e) {
+                notifInfoChat.toggle();
+            });
+            $(document).mouseup(function(e) {
+                if (!notifInfoChat.is(e.target) && notifInfoChat.has(e.target).length === 0 && !notifChat.is(e.target) && notifChat.has(e.target).length === 0) {
+                    notifInfoChat.hide();
+                }
+            });
 
-        const notifAddFriend = $("#notification-addfriend");
-        const notifInfoAddFriend =$('#notification-info-addfriend')   
-        notifAddFriend.click(function(e) {
-            notifInfoAddFriend.animate({width : "show"});
-        });
-        $(document).mouseup(function(e) {
-            if (!notifInfoAddFriend.is(e.target) && notifInfoAddFriend.has(e.target).length === 0 && !notifAddFriend.is(e.target) && notifAddFriend.has(e.target).length === 0) {
-                notifInfoAddFriend.animate({width: "hide"});
-            }
-        });
+            const notifGlobal = $('#notification-global')
+            const notifInfoGlobal = $("#notification-info-notification-global")
+            notifGlobal.click(function(e) {
+                notifInfoGlobal.toggle();
+            });
+            $(document).mouseup(function(e) {
+                if (!notifInfoGlobal.is(e.target) && notifInfoGlobal.has(e.target).length === 0 && !notifGlobal.is(e.target) && notifGlobal.has(e.target).length === 0) {
+                    notifInfoGlobal.hide();
+                }
+            });
+            //show insert comment
+            const btnComment = $('#btn-comment')
+            const formComment = $("#form-comment")
+            btnComment.click(function(e) {
+                formComment.toggle();
+            });
 
-        const notifChat = $('#notification-chat')
-        const notifInfoChat = $("#notification-info-chat")
-        notifChat.click(function(e) {
-            notifInfoChat.toggle();
-        });
-        $(document).mouseup(function(e) {
-            if (!notifInfoChat.is(e.target) && notifInfoChat.has(e.target).length === 0 && !notifChat.is(e.target) && notifChat.has(e.target).length === 0) {
-                notifInfoChat.hide();
-            }
-        });
-
-        const notifGlobal = $('#notification-global')
-        const notifInfoGlobal = $("#notification-info-notification-global")
-        notifGlobal.click(function(e) {
-            notifInfoGlobal.toggle();
-        });
-        $(document).mouseup(function(e) {
-            if (!notifInfoGlobal.is(e.target) && notifInfoGlobal.has(e.target).length === 0 && !notifGlobal.is(e.target) && notifGlobal.has(e.target).length === 0) {
-                notifInfoGlobal.hide();
-            }
-        });
-        //show insert comment
-        const btnComment = $('#btn-comment')
-        const formComment = $("#form-comment")
-        btnComment.click(function(e) {
-            formComment.toggle();
-        });
-
-    })
-</script>
+        })
+    </script>

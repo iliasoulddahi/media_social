@@ -53,5 +53,7 @@ class Friend extends CI_Controller
 
     public function accept_friend()
     {
+        // masukan teman ke requester
+        $requester_id = $this->input->get('requester');
     }
 }

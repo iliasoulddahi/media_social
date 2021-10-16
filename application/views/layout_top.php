@@ -9,10 +9,32 @@
       rel="stylesheet">
     <link rel="stylesheet" href="<?= base_url("assets/css/style.css")?>">
     <style>
-        *{
-            box-sizing: border-box;
-        }
-    </style>
+
+    *{
+        box-sizing: border-box;
+    }   
+
+    /* Chrome, Safari and Opera */
+    .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* IE, Edge and Firefox */
+    .hide-scrollbar {
+        -ms-overflow-style: none;
+        /* IE and Edge */
+        scrollbar-width: none;
+        /* Firefox */
+    }
+
+    textarea {
+        resize: none;
+    }
+
+    .w-50rem{
+        width: 50rem;
+    }
+</style>
 </head>
 <body class="bg-gray-300">
     
