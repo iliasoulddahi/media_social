@@ -10,7 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "animejs": "^3.2.1"
   },
   "devDependencies": {
     "autoprefixer": "^10.3.6",
