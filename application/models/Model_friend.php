@@ -32,7 +32,7 @@ class Model_friend extends CI_Model
     
     public function get_all_friends($id)
     {
-        $query = $this->db->query("SELECT user_id2 FROM friendship WHERE user_id1='$id'")->result_array();
+        $query = $this->db->query("SELECT user_id2 FROM friendship WHERE user_id1='$id' ORDER BY date_created DESC")->result_array();
         $result = [];
         for($i = 0; $i < count($query); $i++){
             array_push($result, $query[$i]['user_id2']);

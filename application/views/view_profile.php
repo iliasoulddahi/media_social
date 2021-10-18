@@ -1,5 +1,7 @@
 <div class=""><!--PEMBUNGKUS UTAMA-->
 
-    <div>Profil Page</div>
+    <div>
+        <div class=""></div>
+    </div>
 
 </div>

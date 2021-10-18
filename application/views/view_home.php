@@ -29,7 +29,7 @@
 
         <!-- scrollable -->
         <!-- center main wrapper -->
-        <div class="overflow-y-scroll hide-scrollbar w-50rem">
+        <div class="overflow-y-scroll hide-scrollbar w-50rem h-screen">
             <div class="bg-gray-500 w-full h-72 relative p-3">
                 <div class="bg-gray-800 w-full rounded-lg relative">
                     <form action="<?= base_url('posting/add') ?>" method="post">
@@ -53,39 +53,8 @@
                 </div>
             </div>
             <!-- POSTINGAN -->
-            <div class="w-full bg-red-400 rounded-2xl mt-3 pb-3 relative">
-                <div class="flex justify-between w-full">
-                    <div class="flex items-center">
-                        <img src="<?= base_url('assets/img/' . $profile_image) ?>" alt="" class="w-16 h-16 bg-white rounded-tl-xl">
-                        <div class="text-xl"><?= $name; ?></div>
-                    </div>
-                    <div class="font-light mt-4 mr-3">01/01/2021-12.00</div>
-                </div>
+            <div id="postingan-timeline"></div>
 
-                <div class="mt-2 ml-3 text-xl">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum dolores sunt quibusdam reiciendis repellat molestias veniam eos autem rem velit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, saepe? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aperiam eum praesentium voluptate saepe temporibus laboriosam delectus, quibusdam sint recusandae unde?
-                </div>
-
-                <div class="flex w-full min-w-max justify-evenly mt-5">
-                    <button href="#" class="w-14 h-8 bg-blue-700 hover:bg-blue-300 rounded-lg text-center"><span class="material-icons text-blue-300 hover:text-blue-700 text-xl">
-                            thumb_up
-                        </span></button>
-                    <button id="btn-comment" class="w-14 h-8 bg-blue-700 hover:bg-blue-300 rounded-lg text-center" id="btn-comment"><span class="material-icons text-blue-300 hover:text-blue-700 text-xl">
-                            insert_comment
-                        </span></button>
-                </div>
-                <!-- form insert comment -->
-                <form action="<?= base_url('') ?>" method="post" id="form-comment" class="w-full px-3 hidden">
-                    <div class="flex">
-                        <textarea name="comment" id="comment" rows="2" placeholder="berikan komentar" class="w-full hide-scrollbar p-2 mt-3"></textarea>
-                        <button type="submit">
-                            <span class="material-icons text-4xl absolute right-6 bottom-6">
-                                send
-                            </span>
-                        </button>
-                    </div>
-                </form>
-            </div>
         </div>
 
         <div class="bg-red-100 w-80 h-screen">
@@ -145,8 +114,8 @@
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="<?=base_url('js/home.js')?>"></script>
-    
+    <script src="<?= base_url('js/home.js') ?>"></script>
+
     <!-- AJAX FUNCTION -->
     <script>
         /**
@@ -166,43 +135,54 @@
                     }
                 })
 
-            }); 
+            });
         })
 
         const add_friend = (id_receiver) => {
             $.ajax({
-                url: "<?=base_url('friend/add_friend')?>",
-                method:"POST",
+                url: "<?= base_url('friend/add_friend') ?>",
+                method: "POST",
                 data: {
-                    'receiver_id' : id_receiver
+                    'receiver_id': id_receiver
                 },
-                success:function(msg) {
+                success: function(msg) {
                     $(`#add-friend-${id_receiver}`).hide('fast')
                 }
             })
         }
 
-        const accept_friend = (id_requester)=>{
-                $.ajax({
-                    url: "<?=base_url('friend/accept_friend')?>",
-                    method:"POST",
-                    data: {
-                        'requester_id' : id_requester
-                    },
-                    success:function(msg) {
-                        $(`#accept-friend-${id_requester}`).hide('fast')
-                    }
-                })
-            }
+        const accept_friend = (id_requester) => {
+            $.ajax({
+                url: "<?= base_url('friend/accept_friend') ?>",
+                method: "POST",
+                data: {
+                    'requester_id': id_requester
+                },
+                success: function(msg) {
+                    $(`#accept-friend-${id_requester}`).hide('fast')
+                }
+            })
+        }
 
         /*
-        *   NOTIFICATION
-        */
+         *   NOTIFICATION
+         */
+
         $.ajax({
             url: "<?= base_url('notification') ?>",
             method: 'POST',
             success: function(data) {
                 $('#notification-info-notification').html(data);
+
+
+                $.ajax({
+                    url: "<?= base_url('posting/time_line') ?>",
+                    method: 'POST',
+                    success: function(data) {
+                        $('#postingan-timeline').html(data);
+
+                    }
+                })
             }
         })
     </script>

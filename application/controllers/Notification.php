@@ -52,7 +52,6 @@ class Notification extends CI_Controller
         $userid_session = $this->session->userdata('user_id');
 
         $base_url_img = base_url('assets/img/');
-        $add_friend_url = base_url('friend/add_friend');
         $search = $this->input->get('keyword');
         $search_friend_result = $this->model_friend->search_friend($search);
         if ($search == "") {
@@ -69,6 +68,11 @@ class Notification extends CI_Controller
       EOD;
                 continue;
             }
+
+            if($i->user_id == $userid_session){
+                continue;
+            }
+
             $output .= <<<EOD
         <div id="add-friend-$i->user_id" class="flex justify-between items-center bg-blue-900 w-full h-10 border-b-2 border-black p-1 mb-2">
             <img src="$base_url_img$i->profile_image" class="w-8 h-8">
