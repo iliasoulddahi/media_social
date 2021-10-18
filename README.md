@@ -1,6 +1,4 @@
 # medsos-kel4
-- applikasi medsos untuk uas wpu ilias ould dahi semester 3 
-#Framework
-- Codeigniter3
-- TailwindCss
+- media social with friendship, post, like, comment, groub 
+- use codeigniter3, tailwindcss, jquery
 
