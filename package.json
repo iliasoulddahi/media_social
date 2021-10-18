@@ -4,13 +4,12 @@
   "description": "What is CodeIgniter ###################",
   "main": "index.js",
   "scripts": {
-    "build-css": "tailwindcss build tailwind/style.css -o assets/css/style.css"
+    "buildcss": "tailwindcss build tailwind/style.css -o assets/css/style.css"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "autoprefixer": "^10.3.6",
     "postcss": "^8.3.8",

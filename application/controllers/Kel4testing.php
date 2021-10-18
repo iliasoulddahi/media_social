@@ -26,7 +26,7 @@ class Kel4testing extends CI_Controller
         // var_dump( $this->model_friend->get_requester_id('1'));
         // $this->model_friend->delete_friend_request('20','100');
         // var_dump($this->model_friend->is_friend('10', '1'));
-        var_dump($this->model_friend->get_all_friends('2'));
+        // var_dump($this->model_friend->get_all_friends('2'));
         // var_dump($this->model_posting->get_friend_post(['3']));
         
     }

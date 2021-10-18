@@ -31,9 +31,6 @@
         resize: none;
     }
 
-    .w-50rem{
-        width: 50rem;
-    }
 </style>
 </head>
 <body class="bg-gray-300">

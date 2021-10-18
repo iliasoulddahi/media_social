@@ -1,5 +1,4 @@
-
-        /**
+       /**
          * Dom Manipulation Function
          */
         $(document).ready(function(e) {

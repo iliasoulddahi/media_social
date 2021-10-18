@@ -1,9 +1,9 @@
 <!-- navbar -->
 <div class="flex justify-between bg-blue-400 w-full" id="navbar">
     <div class="flex flex-col justify-center items-center w-3/5">
-        <div class="font-semibold text-3xl">
+        <a href="<?=base_url('home')?>"><div class="font-semibold text-3xl">
             MedsosKel4
-        </div>
+        </div></a>
     </div>
     <div class="flex justify-between items-center">
         <img src="<?= base_url('assets/img/' . $profile_image) ?>" alt="" class="w-12 h-12 rounded-full mr-3">
