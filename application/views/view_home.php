@@ -1,7 +1,7 @@
 <!-- PEMBUNGKUS UTAMA -->
 
 <!-- wrapper -->
-<div class="mt-4">
+<div class="md:flex justify-between bg-gray-600 w-full md:w-5/6 lg:w-3/4 xl:w-3/4 h-screen mx-auto">
     <!-- main wrapper -->
     <div class="flex justify-center items-start">
         <!-- sidebar left -->
@@ -29,7 +29,7 @@
 
         <!-- scrollable -->
         <!-- center main wrapper -->
-        <div class="overflow-y-scroll hide-scrollbar w-50rem h-screen">
+        <div class="overflow-y-scroll hide-scrollbar w-650px h-screen">
             <div class="bg-gray-500 w-full h-72 relative p-3">
                 <div class="bg-gray-800 w-full rounded-lg relative">
                     <form action="<?= base_url('posting/add') ?>" method="post">

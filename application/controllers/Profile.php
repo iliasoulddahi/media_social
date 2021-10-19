@@ -8,6 +8,9 @@ class Profile extends CI_Controller
 		parent::__construct();
 		$this->load->model('model_posting');
 		$this->load->model('model_friend');
+		if (!$this->input->get('p')){
+			redirect('home');
+		}
 	}
 
 	public function index()
