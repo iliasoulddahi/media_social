@@ -26,7 +26,8 @@
             /* Firefox */
         }
 
-        textarea,input {
+        textarea,
+        input {
             border: none;
             overflow: auto;
             outline: none;
@@ -36,7 +37,11 @@
             box-shadow: none;
             resize: none;
         }
+
+        input:focus::placeholder {
+            color: transparent;
+        }
     </style>
 </head>
 
-<body class="bg-gray-300 h-screen text-gray-900">
+<body class="bg-gradient-to-br from-purple-500 via-black to-purple-800 h-screen text-gray-900">

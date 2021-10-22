@@ -42,7 +42,7 @@
         </div>
     </div>
 
-    <div class="w-full md:w-550px lg:w-650px xl:w-700px">
+    <div class="w-full md:w-550px lg:w-650px xl:w-700px overflow-y-scroll hide-scrollbar">
         <?php if (count($posts) < 1) : ?>
             <div class="text-center text-3xl font-semibold text-black mt-32 capitalize"> <?=$profile_name?> Belum Memposting Apapun</div>
         <?php endif ?>

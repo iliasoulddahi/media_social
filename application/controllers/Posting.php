@@ -39,6 +39,7 @@ class Posting extends CI_Controller
         $friend_post = $this->model_posting->get_friend_post($friends);
         $self_post = $this->model_posting->get_all_post($sess_id);
 
+        // Mengkoleksi data dari db ke dalam variable array assosiative $postingan
         $postingan = [];
         for ($i = 0; $i < count($friend_post); $i++) {
             for ($j = 0; $j < count($friend_post[$i]); $j++) {
@@ -49,6 +50,7 @@ class Posting extends CI_Controller
             array_push($postingan, $self_post[$i]);
         }
 
+        // sorting berdasarkan date_created / timestamp
         usort($postingan, function ($firstItem, $secondItem) {
             $timeStamp1 = strtotime($firstItem['date_created']);
             $timeStamp2 = strtotime($secondItem['date_created']);
@@ -56,7 +58,6 @@ class Posting extends CI_Controller
         });
 
         $output = '';
-
         if (count($postingan) < 1) {
             $profile_image = base_url('assets/img/admin_profile_image.png');
 
@@ -140,9 +141,6 @@ class Posting extends CI_Controller
         </div>
       EOD;
         }
-
-        // var_dump($postingan);
-        // var_dump($friend_post);
         echo $output;
     }
 }
