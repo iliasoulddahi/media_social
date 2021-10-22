@@ -66,4 +66,15 @@ class Model_friend extends CI_Model
         }
     }
 
+
+    public function is_added($sess_id, $profile_id)
+    {
+        $query = $this->db->query("SELECT * FROM friend_request WHERE requester_id='$sess_id' AND receiver_id='$profile_id'")->result();
+        if (count($query) < 1){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
 }

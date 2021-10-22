@@ -28,6 +28,8 @@ class Kel4testing extends CI_Controller
         // var_dump($this->model_friend->is_friend('10', '1'));
         // var_dump($this->model_friend->get_all_friends('2'));
         // var_dump($this->model_posting->get_friend_post(['3']));
+        // var_dump($this->model_user->get_all_from_id('2'));
+        var_dump($this->model_friend->is_added('4','2'));
         
     }
 }

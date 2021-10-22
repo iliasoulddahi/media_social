@@ -31,14 +31,18 @@ class Notification extends CI_Controller
 
         //output
         $base_url_img = base_url('assets/img/');
+        $base_url_profile = base_url('profile?p=');
         $output = "";
         for ($i = 0; $i < count($notification); $i++) {
             $requester =  $this->model_user->get_all_from_id_2($notification[$i]);
             $output .= <<<EOD
-        <div id="accept-friend-$requester->user_id" class="flex justify-between items-center bg-blue-900 w-full h-10 border-b-2 border-black p-1 mb-2">
-        <a href="#"><img src="$base_url_img$requester->profile_image" class="w-8 h-8"></a>
-        <div>$requester->username</div>
-        <button onClick="accept_friend($requester->user_id)" class="bg-green-300">terima</button>
+        <div id="accept-friend-$requester->user_id" class="flex justify-between items-center bg-gray-500 w-full p-1 mb-2">
+        <a href="$base_url_profile$requester->user_id"><img src="$base_url_img$requester->profile_image" class="h-14"></a>
+        <div class="font-bold text-gray-900 w-52">$requester->username <span class="font-light">mengundang anda untuk berteman apa anda menerima nya apa adanya? ...</span></div> 
+        <div class="flex flex-col self-center h-16  justify-between">
+        <button class="bg-red-600 w-14 rounded-lg">tolak</button>
+        <button onClick="accept_friend($requester->user_id)" class="bg-green-300 w-14 rounded-lg">terima</button>
+        </div>
         </div>
         EOD;
         }
@@ -52,6 +56,7 @@ class Notification extends CI_Controller
         $userid_session = $this->session->userdata('user_id');
 
         $base_url_img = base_url('assets/img/');
+        $base_url_profile = base_url('profile?p=');
         $search = $this->input->get('keyword');
         $search_friend_result = $this->model_friend->search_friend($search);
         if ($search == "") {
@@ -61,23 +66,25 @@ class Notification extends CI_Controller
         foreach ($search_friend_result as $i) {
             if ($this->model_friend->is_friend($i->user_id, $userid_session)) {
                 $output .= <<<EOD
-        <div id="add-friend-$i->user_id" class="flex justify-between items-center bg-blue-900 w-full h-10 border-b-2 border-black p-1 mb-2">
-            <img src="$base_url_img$i->profile_image" class="w-8 h-8">
-            <div>$i->username</div>
+        <div id="add-friend-$i->user_id" class="flex justify-between items-center bg-gray-500 w-full p-1 mb-2">
+            <a class="flex" href="$base_url_profile$i->user_id"><img src="$base_url_img$i->profile_image" class="w-14">
+            <div class="font-semibold ml-1">$i->username <br> <span class="font-light">jakarta barat</span></div></a>
+            <div class="bg-green-100 self-end">sudah berteman dengan anda</div>
         </div>
       EOD;
                 continue;
             }
 
-            if($i->user_id == $userid_session){
+            if ($i->user_id == $userid_session) {
                 continue;
             }
 
             $output .= <<<EOD
-        <div id="add-friend-$i->user_id" class="flex justify-between items-center bg-blue-900 w-full h-10 border-b-2 border-black p-1 mb-2">
-            <img src="$base_url_img$i->profile_image" class="w-8 h-8">
-            <div>$i->username</div>
-            <button onClick="add_friend($i->user_id)" class="bg-green-300" name="receiver"><span class="material-icons">
+        <div id="add-friend-$i->user_id" class="flex justify-between items-center bg-gray-500 w-full p-1 mb-2">
+            <a class="flex" href="$base_url_profile$i->user_id"><img src="$base_url_img$i->profile_image" class="w-14">
+            <div class="font-semibold ml-1">$i->username <br> <span class="font-light">jakarta barat</span></div></a>
+            
+            <button onClick="add_friend($i->user_id)" class="bg-blue-600 mr-3" name="receiver"><span class="material-icons text-4xl">
             person_add_alt
             </span></button>
         </div>

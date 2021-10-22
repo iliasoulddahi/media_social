@@ -1,6 +1,5 @@
-
 <!-- navbar info - notification di paling bawah agar overide-->
-<div class="flex justify-between items-center absolute bg-blue-400 w-96 h-12 left-1/2 top-0 ">
+<div class="flex justify-between items-center absolute bg-gray-500 w-96 h-12 left-1/2 top-0 ">
 
     <button id="notification-addfriend" class="flex w-10 h-10 transition duration-200 ease-in-out bg-blue-700 hover:bg-blue-300 transform hover:-translate-y-1 hover:scale-105 rounded-sm text-center"><span class="material-icons text-blue-300 hover:text-blue-700 text-4xl">
             person_add_alt
@@ -46,7 +45,7 @@
 
 <div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="<?= base_url('js/home.js') ?>"></script>
 
     <!-- AJAX FUNCTION -->
@@ -114,13 +113,79 @@
                     success: function(data) {
                         $('#postingan-timeline').html(data);
 
+                        $.ajax({
+                            url: "<?= base_url('friend/friends_list') ?>",
+                            method: 'POST',
+                            success: function(data) {
+                                $('#home-friend-list').html(data);
+                            }
+                        })
                     }
                 })
             }
         })
+
+
+        //custom function
+        function myToggle(target) {
+            $('#' + target).toggle()
+        }
+
+        /**
+         * Dom Manipulation Function
+         */
+        // DOCUMENT SUDAH READY FUNCTION
+        $(document).ready(function(e) {
+
+
+            const notifAddFriend = $("#notification-addfriend");
+            const notifInfoAddFriend = $('#notification-info-addfriend')
+            notifAddFriend.click(function(e) {
+                notifInfoAddFriend.animate({
+                    width: "show"
+                });
+            });
+            $(document).mouseup(function(e) {
+                if (!notifInfoAddFriend.is(e.target) && notifInfoAddFriend.has(e.target).length === 0 && !notifAddFriend.is(e.target) && notifAddFriend.has(e.target).length === 0) {
+                    notifInfoAddFriend.animate({
+                        width: "hide"
+                    });
+                }
+            });
+
+            const notifChat = $('#notification-chat')
+            const notifInfoChat = $("#notification-info-chat")
+            notifChat.click(function(e) {
+                notifInfoChat.toggle();
+            });
+            $(document).mouseup(function(e) {
+                if (!notifInfoChat.is(e.target) && notifInfoChat.has(e.target).length === 0 && !notifChat.is(e.target) && notifChat.has(e.target).length === 0) {
+                    notifInfoChat.hide();
+                }
+            });
+
+            const notifGlobal = $('#notification-global')
+            const notifInfoGlobal = $("#notification-info-notification-global")
+            notifGlobal.click(function(e) {
+                notifInfoGlobal.toggle();
+            });
+            $(document).mouseup(function(e) {
+                if (!notifInfoGlobal.is(e.target) && notifInfoGlobal.has(e.target).length === 0 && !notifGlobal.is(e.target) && notifGlobal.has(e.target).length === 0) {
+                    notifInfoGlobal.hide();
+                }
+            });
+            //show insert comment
+            const btnComment = $('#btn-comment')
+            const formComment = $("#form-comment")
+            btnComment.click(function(e) {
+                formComment.toggle();
+            });
+
+        })
     </script>
 
-</body>
-</html>
+    </body>
 
-<!-- ini bottom memang sebagai penutup bawah page -->
+    </html>
+
+    <!-- ini bottom memang sebagai penutup bawah page -->

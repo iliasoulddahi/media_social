@@ -1,39 +1,25 @@
 <!-- PEMBUNGKUS UTAMA -->
 
 <!-- wrapper -->
-<div class="md:flex justify-between bg-gray-600 w-full md:w-5/6 lg:w-3/4 xl:w-3/4 h-screen mx-auto">
+<div class="h-5/6 md:flex justify-evenly bg-gray-500 w-full md:w-5/6 lg:w-3/4 xl:w-3/4 mx-auto mt-5">
     <!-- main wrapper -->
     <div class="flex justify-center items-start">
         <!-- sidebar left -->
-        <div class="flex flex-col p-3 w-28 h-screen">
-            <div class="flex flex-wrap items-center h-screen w-11/12 overflow-y-scroll hide-scrollbar">
-                <div class="bg-white rounded-full m-auto mb-3 w-8 sm:w-10 md:w-14 xl:w-16 h-8 sm:h-10 md:h-14 xl:h-16"></div>
-                <div class="bg-white rounded-full m-auto mb-3 w-8 sm:w-10 md:w-14 xl:w-16 h-8 sm:h-10 md:h-14 xl:h-16"></div>
-                <div class="bg-white rounded-full m-auto mb-3 w-8 sm:w-10 md:w-14 xl:w-16 h-8 sm:h-10 md:h-14 xl:h-16"></div>
-                <div class="bg-white rounded-full m-auto mb-3 w-8 sm:w-10 md:w-14 xl:w-16 h-8 sm:h-10 md:h-14 xl:h-16"></div>
-                <div class="bg-white rounded-full m-auto mb-3 w-8 sm:w-10 md:w-14 xl:w-16 h-8 sm:h-10 md:h-14 xl:h-16"></div>
-                <div class="bg-white rounded-full m-auto mb-3 w-8 sm:w-10 md:w-14 xl:w-16 h-8 sm:h-10 md:h-14 xl:h-16"></div>
-                <div class="bg-white rounded-full m-auto mb-3 w-8 sm:w-10 md:w-14 xl:w-16 h-8 sm:h-10 md:h-14 xl:h-16"></div>
-                <div class="bg-white rounded-full m-auto mb-3 w-8 sm:w-10 md:w-14 xl:w-16 h-8 sm:h-10 md:h-14 xl:h-16"></div>
-                <div class="bg-white rounded-full m-auto mb-3 w-8 sm:w-10 md:w-14 xl:w-16 h-8 sm:h-10 md:h-14 xl:h-16"></div>
-                <div class="bg-white rounded-full m-auto mb-3 w-8 sm:w-10 md:w-14 xl:w-16 h-8 sm:h-10 md:h-14 xl:h-16"></div>
-                <div class="bg-white rounded-full m-auto mb-3 w-8 sm:w-10 md:w-14 xl:w-16 h-8 sm:h-10 md:h-14 xl:h-16"></div>
-                <div class="bg-white rounded-full m-auto mb-3 w-8 sm:w-10 md:w-14 xl:w-16 h-8 sm:h-10 md:h-14 xl:h-16"></div>
-                <div class="bg-white rounded-full m-auto mb-3 w-8 sm:w-10 md:w-14 xl:w-16 h-8 sm:h-10 md:h-14 xl:h-16"></div>
-                <div class="bg-white rounded-full m-auto mb-3 w-8 sm:w-10 md:w-14 xl:w-16 h-8 sm:h-10 md:h-14 xl:h-16"></div>
-                <div class="bg-white rounded-full m-auto mb-3 w-8 sm:w-10 md:w-14 xl:w-16 h-8 sm:h-10 md:h-14 xl:h-16"></div>
-                <div class="bg-white rounded-full m-auto mb-3 w-8 sm:w-10 md:w-14 xl:w-16 h-8 sm:h-10 md:h-14 xl:h-16"></div>
 
+            <div class="flex flex-col h-full w-28 overflow-y-scroll hide-scrollbar mt-4">
+                <div id="home-friend-list">
+                    
+                </div>
             </div>
-        </div>
+
 
         <!-- scrollable -->
         <!-- center main wrapper -->
-        <div class="overflow-y-scroll hide-scrollbar w-650px h-screen">
-            <div class="bg-gray-500 w-full h-72 relative p-3">
-                <div class="bg-gray-800 w-full rounded-lg relative">
+        <div class="overflow-y-scroll hide-scrollbar w-650px h-full">
+            <div class="bg-gray-500 w-full relative p-3">
+                <div class=" w-full rounded-lg relative">
                     <form action="<?= base_url('posting/add') ?>" method="post">
-                        <textarea name="user_post" id="user_post" cols="" rows="8" placeholder="<?= $name . ' ' ?>Apa Yang Anda Pikirkan?" class="w-full rounded-md bg-white p-2 border-1 focus:border-0 text-xl" required></textarea>
+                        <textarea name="user_post" id="user_post" cols="" rows="3" placeholder="<?= $name . ' ' ?>Apa Yang Anda Pikirkan?" class="w-full rounded-md bg-white p-2 border-1 focus:border-0 text-xl" required></textarea>
 
                         <button type="submit" class="absolute rounded-sm bottom-0 right-1 p-1">
                             <span class="material-icons text-4xl">
@@ -57,9 +43,7 @@
 
         </div>
 
-        <div class="bg-red-100 w-80 h-screen">
 
-        </div>
     </div>
 </div>
 

@@ -36,7 +36,6 @@ class Auth extends CI_Controller
             // MENAMPILKAN VIEW
             $this->load->view("layout_top", $data);
             $this->load->view("auth_view_login");
-            $this->load->view('layout_bottom');
         } else {
 
             $data_input = [
@@ -86,6 +85,10 @@ class Auth extends CI_Controller
     public function registration()
     {
 
+        // check apakah session masih ada
+        if ($this->session->userdata('user_id')) {
+            redirect('home');
+        }
 
         //form validation
 
@@ -109,7 +112,6 @@ class Auth extends CI_Controller
             // MENAMPILKAN VIEW
             $this->load->view("layout_top", $data);
             $this->load->view("auth_view_register");
-            $this->load->view('layout_bottom');
         } else {
 
             // mengecek gender untuk foto profil default

@@ -9,6 +9,7 @@ class Home extends CI_Controller
 
         $this->load->model('model_user');
         $this->load->model('model_posting');
+        $this->load->model('model_friend');
         if (!$this->session->userdata('user_id')) {
             redirect('auth/login');
         }
@@ -18,8 +19,6 @@ class Home extends CI_Controller
     public function index()
     {
         $data_from_session_id = $this->model_user->get_all_from_id($this->session->userdata('user_id'));
-        // Mendapat Postingan User Dari database
-        $postingan = $this->model_posting->get_all_post($this->session->userdata('user_id'));
 
         $data = [
             'title' => $data_from_session_id['username'],
@@ -29,6 +28,7 @@ class Home extends CI_Controller
         $this->load->view("layout_top", $data);
         $this->load->view("layout_view_navbar");
         $this->load->view('view_home');
+        $this->load->view('layout_view_footer');
         $this->load->view('layout_bottom');
     }
 }
