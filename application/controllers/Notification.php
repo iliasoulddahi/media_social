@@ -63,6 +63,9 @@ class Notification extends CI_Controller
             return;
         }
         $output = '';
+        if(count($search_friend_result) < 1){
+            $output .= "<div class='text-center mt-10 font-semibold text-xl'>$search tidak di temukan</div>";
+        }
         foreach ($search_friend_result as $i) {
             if ($this->model_friend->is_friend($i->user_id, $userid_session)) {
                 $output .= <<<EOD

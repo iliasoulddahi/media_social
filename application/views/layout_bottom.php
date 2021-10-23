@@ -24,7 +24,7 @@
             <input type="text" id="keyword_add_friend_search" name="keyword_add_friend_search" placeholder="Cari Teman" class="w-full h-full p-4">
         </form>
         <!-- form tambah teman -->
-        <div id="add_friend_form">
+        <div id="add_friend_form" class="overflow-y-scroll hide-scrollbar max-h-56">
 
         </div>
     </div>
@@ -66,10 +66,8 @@
                         $('#add_friend_form').html(data);
                     }
                 })
-
             });
         })
-
         const add_friend = (id_receiver) => {
             $.ajax({
                 url: "<?= base_url('friend/add_friend') ?>",
@@ -82,7 +80,6 @@
                 }
             })
         }
-
         const accept_friend = (id_requester) => {
             $.ajax({
                 url: "<?= base_url('friend/accept_friend') ?>",
@@ -99,7 +96,6 @@
         /*
          *   NOTIFICATION
          */
-
         $.ajax({
             url: "<?= base_url('notification') ?>",
             method: 'POST',
@@ -181,6 +177,19 @@
                 formComment.toggle();
             });
 
+        })
+
+
+
+        //form upload
+        $('#post-upload-image').change(function(e) {
+            $.ajax({
+                url: "<?= base_url('upload/do_upload') ?>",
+                method: 'POST',
+                success: function(data) {
+                    console.log('ok')
+                }
+            })
         })
     </script>
 
