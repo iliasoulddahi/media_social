@@ -45,4 +45,4 @@
     </style>
 </head>
 
-<body class="bg-gradient-to-br from-purple-500 via-black to-purple-800 h-screen text-gray-900">
+<body class="bg-gradient-to-br from-purple-500 via-gray-400 to-purple-800 h-screen text-gray-900">

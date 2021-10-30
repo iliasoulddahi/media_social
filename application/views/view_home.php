@@ -1,14 +1,14 @@
 <!-- PEMBUNGKUS UTAMA -->
 
 <!-- wrapper -->
-<div class="h-5/6 md:flex justify-evenly bg-gray-500 w-full md:w-5/6 lg:w-3/4 xl:w-3/4 mx-auto mt-5">
+<div class="h-5/6 flex justify-evenly bg-gray-500 w-full mt-5">
     <!-- main wrapper -->
-    <div class="flex justify-center items-start">
+    <div class="flex justify-evenly items-start w-full">
         <!-- sidebar left -->
 
-        <div class="flex flex-col h-full w-28 overflow-y-scroll hide-scrollbar mt-1">
+        <div class="flex flex-col h-full w-52 overflow-y-scroll hide-scrollbar mt-1 border-r border-gray-300 pr-10">
             <div class="bg-green-300 rounded-md text-center">Teman Anda</div>
-            <div id="home-friend-list" class="mt-3">
+            <div id="home-friend-list" class="mt-3 bg-gray-400">
 
             </div>
         </div>
@@ -16,7 +16,7 @@
 
         <!-- scrollable -->
         <!-- center main wrapper -->
-        <div class="overflow-y-scroll hide-scrollbar w-650px h-full">
+        <div class="overflow-y-scroll hide-scrollbar w-650px h-full border-r border-gray-300 pr-10">
             <div class="bg-gray-500 w-full relative p-3">
                 <div class=" w-full rounded-lg relative">
                     <form action="<?= base_url('posting/add') ?>" method="post">
@@ -45,6 +45,18 @@
             <!-- POSTINGAN -->
             <div id="postingan-timeline"></div>
 
+        </div>
+
+        <!-- right side -->
+        <div class="bg-gray-100 h-full w-72 overflow-y-scroll hide-scrollbar">
+            <div class="w-full min-h-72 bg-gray-700">
+            <div class="bg-green-300 rounded-md text-center">Groub Anda</div>
+                sugest friend
+            </div>
+
+            <div class="w-full h-40 bg-red-400">
+                Groub
+            </div>
         </div>
 
 

@@ -1,4 +1,4 @@
-<div class="w-full h-screen bg-gradient-to-br from-purple-500 via-black to-purple-800 relative ">
+<div class="w-full h-screen relative ">
     <!-- WRAPPER || PEMBUNGKUT UTAMA -->
     <!-- form -->
     <div class="absolute w-500px h-96 p-3 bg-gray-900 opacity-50 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-gray-100">
@@ -24,7 +24,7 @@
         ?>
 
 <div class="mt-20 w-full text-center text-lg text-white">
-    belum punya akun? buat <a class="text-green-300" href="<?= base_url('auth/registration') ?>">di sini</a>
+    belum punya akun? buat <a class="text-red-600" href="<?= base_url('auth/registration') ?>">di sini</a>
 </div>
     </div>
 
