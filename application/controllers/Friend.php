@@ -24,7 +24,7 @@ class Friend extends CI_Controller
         $requester = $this->session->userdata('user_id');
         $receiver = $this->input->post('receiver_id');
         $this->model_friend->insert_to_friend_request($requester, $receiver);
-        
+
         redirect($_SERVER['HTTP_REFERER']);
     }
 
@@ -43,7 +43,7 @@ class Friend extends CI_Controller
         $friends = $this->model_friend->get_all_friends($sess_id);
 
         $output = '';
-        if(count($friends) < 1){
+        if (count($friends) < 1) {
             $output .= <<<EOD
          
             <div class="capitalize transform rotate-90 text-gray-100 text-4xl whitespace-nowrap mt-14">Anda Belum Memiliki Teman</div>
@@ -53,8 +53,8 @@ class Friend extends CI_Controller
         for ($i = 0; $i < count($friends); $i++) {
             $user_data = $this->model_user->get_all_from_id($friends[$i]);
             $username = $user_data['username'];
-            $profile_image = base_url('assets/img/').$user_data['profile_image'];
-            $profile_link = base_url().'profile?p='.$user_data['user_id'];
+            $profile_image = base_url('assets/img/') . $user_data['profile_image'];
+            $profile_link = base_url() . 'profile?p=' . $user_data['user_id'];
             $output .= <<<EOD
             <a href="$profile_link">
             <div class="relative">
