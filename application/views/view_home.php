@@ -62,3 +62,6 @@
 
     </div>
 </div>
+
+<script src=" <?= base_url( 'assets/js/home_page/doman.js' ) ?> "></script>
+<script src=" <?= base_url( 'assets/js/home_page/ajax.js' ) ?> "></script>

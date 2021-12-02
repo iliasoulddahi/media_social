@@ -45,8 +45,6 @@
 
 <div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
     <!-- AJAX FUNCTION -->
     <script>
         /**
@@ -95,31 +93,46 @@
         /*
          *   NOTIFICATION
          */
-        $.ajax({
-            url: "<?= base_url('notification') ?>",
-            method: 'POST',
-            success: function(data) {
-                $('#notification-info-notification').html(data);
+        function ajaxGetNotif() {
+            $.ajax({
+                url: "<?= base_url('notification') ?>",
+                method: 'POST',
+                success: function(data) {
+                    $('#notification-info-notification').html(data);
+                }
+            })
+        }
+
+        function ajaxGetFriendList() {
+            $.ajax({
+                url: "<?= base_url('friend/friends_list') ?>",
+                method: 'POST',
+                success: function(data) {
+                    $('#home-friend-list').html(data);
+                }
+            })
+        }
+
+        function ajaxGetPostingan() {
+            $.ajax({
+                url: "<?= base_url('posting/time_line') ?>",
+                method: 'POST',
+                success: function(data) {
+                    $('#postingan-timeline').html(data);
 
 
-                $.ajax({
-                    url: "<?= base_url('posting/time_line') ?>",
-                    method: 'POST',
-                    success: function(data) {
-                        $('#postingan-timeline').html(data);
+                }
+            })
+        }
 
-                        $.ajax({
-                            url: "<?= base_url('friend/friends_list') ?>",
-                            method: 'POST',
-                            success: function(data) {
-                                $('#home-friend-list').html(data);
-                            }
-                        })
-                    }
-                })
-            }
-        })
-
+        const kumpulanFungsiAjax = [
+            ajaxGetNotif,
+            ajaxGetFriendList,
+            ajaxGetPostingan
+        ];
+        for (let i = 0; i < kumpulanFungsiAjax.length; i++) {
+            kumpulanFungsiAjax[i]();
+        }
 
         //custom function
         function myToggle(target) {

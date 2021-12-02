@@ -1,0 +1,1 @@
+// ajax auto get
